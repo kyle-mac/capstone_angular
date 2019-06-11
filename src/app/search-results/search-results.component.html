@@ -1,5 +1,13 @@
 <div class="container">
-  <p>You picked toys! </p>
+  <h4>Product Offerings for Toys</h4>
+</div>
+
+<div class="container">
+  <ul class="products">
+    <li *ngFor="let product of products">
+    <span class="badge">{{product.id}}</span> {{product.name}}
+    </li>
+  </ul>
 </div>
 
 <div class="container">

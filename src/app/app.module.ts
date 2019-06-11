@@ -19,6 +19,10 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([
+      { path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
       {path:'home', component: HomeComponent},
       {path:'recommendations',component: RecommendationsComponent},
       {path:'searchResults',component: SearchResultsComponent}

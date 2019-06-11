@@ -1,9 +1,10 @@
 <form class="col-lg-6 offset-lg-3" style="margin-top: 200px;">
   <div class="row justify-content-center">
     <input class="form-control mr-sm-2" type="text" placeholder="I need help finding..."
-           style="text-align:center; margin-bottom: 50px;" ng-model="searchQuery">
+           style="text-align:center; margin-bottom: 50px;" ng-model="searchQuery" #box (keyup)="0">
+    <p>{{box.value}}</p>
     <span class="input-group-btn">
-          <a routerLink="/searchResults"><button class="btn btn-primary" >Search</button></a>
+          <a [routerLink]="['/searchResults', box.value]"><button class="btn btn-primary" >Search</button></a>
      </span>
   </div>
 </form>
