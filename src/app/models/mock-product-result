@@ -1,0 +1,6 @@
+import { ProductResult } from './productResult';
+
+
+export const PRODUCTRESULTS: ProductResult = [
+  { product: 'toy', tags: ['hello','this', 'is', 'a', 'test'] }
+];
