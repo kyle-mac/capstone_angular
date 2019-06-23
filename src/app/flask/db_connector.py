@@ -31,6 +31,3 @@ def query_db(query, query_type):
 
     cnx.close()
     cursor.close()
-
-results = query_db('SELECT * FROM Toys_and_Games LIMIT 10','GET')
-print(results)
