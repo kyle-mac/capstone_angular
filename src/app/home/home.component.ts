@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { CATEGORIES } from '../models/categories';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Category } from '../models/category';
+import { CategoryApiService } from '../services/category-api.service';
+
 
 
 @Component({
@@ -7,13 +10,25 @@ import { CATEGORIES } from '../models/categories';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit , OnDestroy {
 
-  constructor() { }
+    categoriesListSubs: Subscription;
+    categoriesList: Category[];
 
-  categories = CATEGORIES;
+    constructor(private categoryApi: CategoryApiService) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+      this.categoriesListSubs = this.categoryApi
+        .getCategories()
+        .subscribe(res => {
+            this.categoriesList = res;
+          },
+          console.error
+        );
+    }
 
+    ngOnDestroy() {
+      this.categoriesListSubs.unsubscribe();
+    }
 }
