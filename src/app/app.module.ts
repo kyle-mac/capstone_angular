@@ -12,10 +12,10 @@ import { AppComponent } from './app.component';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
 import { CategoryApiService } from './services/category-api.service';
 import { RecommendationApiService } from './services/recommendations-api.service';
 import { AboutComponent } from './about/about.component';
+import { ProductSearchComponent } from './product-search/product-search.component';
 
 
 
@@ -25,8 +25,8 @@ import { AboutComponent } from './about/about.component';
     AboutComponent,
     RecommendationsComponent,
     HomeComponent,
-    SearchResultsComponent,
-    AboutComponent
+    AboutComponent,
+    ProductSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,7 @@ import { AboutComponent } from './about/about.component';
       {path:'home', component: HomeComponent},
       {path:'about', component: AboutComponent},
       {path:'recommendations',component: RecommendationsComponent},
-      {path:'searchResults',component: SearchResultsComponent}
+      {path:'productSearch',component: ProductSearchComponent}
 
     ])
   ],
