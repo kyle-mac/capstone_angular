@@ -12,3 +12,10 @@ img {
   margin-right: 5px;
   margin-bottom: 5px
 }
+
+.card-header {
+  background-color: #1a8cff;
+  border: #66b3ff;
+  height: 70px;
+  color: white
+}
