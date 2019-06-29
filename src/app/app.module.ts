@@ -15,15 +15,18 @@ import { HomeComponent } from './home/home.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { CategoryApiService } from './services/category-api.service';
 import { RecommendationApiService } from './services/recommendations-api.service';
+import { AboutComponent } from './about/about.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AboutComponent,
     RecommendationsComponent,
     HomeComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { RecommendationApiService } from './services/recommendations-api.service
         pathMatch: 'full'
       },
       {path:'home', component: HomeComponent},
+      {path:'about', component: AboutComponent},
       {path:'recommendations',component: RecommendationsComponent},
       {path:'searchResults',component: SearchResultsComponent}
 
