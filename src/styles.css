@@ -1,5 +1,19 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+.navbar{
+    background: #66b3ff;
+}
+
 .jumbotron{
     background: #66b3ff;
+}
+
+.btn-link{
+    color: white;
+}
+
+.btn-primary {
+    background-color: #66b3ff;
+    border: #66b3ff;
+
 }

@@ -9,13 +9,10 @@
       <h5 class="card-title">{{ recommendation[1] }}</h5>
       <p class="card-text"><strong>Price</strong>: ${{ recommendation[2] }}</p>
       <p class="card-text"><strong>Description</strong>: {{ recommendation[5] | slice:0:150 }}...</p>
-      <p class="card-text">    <strong>Keyword Tags</strong>:</p>
-      <button type="button" class="btn btn-primary">Primary</button>
-      <button type="button" class="btn btn-primary">Primary</button>
-      <button type="button" class="btn btn-primary">Primary</button>
-      <button type="button" class="btn btn-primary">Primary</button>
-      <button type="button" class="btn btn-primary">Primary</button>
-      <button type="button" class="btn btn-primary">Primary</button>
+      <p class="card-text">    <strong>Product Tags</strong>:</p>
+      <button  *ngFor="let recommendation of recommendationList" type="button"
+               class="btn product-tags btn-primary">Primary
+      </button>
     </div>
   </div>
 </div>
