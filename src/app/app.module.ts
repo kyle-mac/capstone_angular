@@ -16,6 +16,7 @@ import { CategoryApiService } from './services/category-api.service';
 import { RecommendationApiService } from './services/recommendations-api.service';
 import { AboutComponent } from './about/about.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
+import { PersonalRecommendationComponent } from './personal-recommendation/personal-recommendation.component';
 
 
 
@@ -26,7 +27,8 @@ import { ProductSearchComponent } from './product-search/product-search.componen
     RecommendationsComponent,
     HomeComponent,
     AboutComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+    PersonalRecommendationComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +45,8 @@ import { ProductSearchComponent } from './product-search/product-search.componen
       {path:'home', component: HomeComponent},
       {path:'about', component: AboutComponent},
       {path:'recommendations',component: RecommendationsComponent},
-      {path:'productSearch',component: ProductSearchComponent}
-
+      {path:'productSearch',component: ProductSearchComponent},
+      {path:'personalRecommendation',component: PersonalRecommendationComponent}
     ])
   ],
   providers: [CategoryApiService, RecommendationApiService],
