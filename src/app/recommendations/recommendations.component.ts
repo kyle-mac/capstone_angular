@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Recommendation } from '../models/recommendation';
+import { PRODUCTFEATURES } from '../models/productFeatures';
 import { RecommendationApiService } from '../services/recommendations-api.service';
 
 
@@ -15,6 +16,8 @@ export class RecommendationsComponent implements OnInit , OnDestroy {
 
     recommendationListSubs: Subscription;
     recommendationList: Recommendation[];
+    ProductFeatures = PRODUCTFEATURES;
+    featureList = [];
 
     constructor(private recommendationApi: RecommendationApiService) {
     }
@@ -33,4 +36,14 @@ export class RecommendationsComponent implements OnInit , OnDestroy {
     ngOnDestroy() {
       this.recommendationListSubs.unsubscribe();
     }
+
+    saveFeature(feature) {
+        console.log('Clicked feature was ' + feature)
+        this.featureList.push(feature)
+        console.log('Feature list is now ' + this.featureList);
+      }
+
+     presentFeatures(){
+        return this.featureList
+     }
 }
