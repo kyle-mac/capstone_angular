@@ -40,6 +40,7 @@ export class RecommendationsComponent implements OnInit , OnDestroy {
 
     saveFeature(feature) {
         console.log('Clicked feature was ' + feature)
+        this.featureList = this.featureList.filter(item => item !== "You haven't selected any features yet!");
         if (this.featureList.includes(feature)) {
            console.log("Feature already added");
         }
@@ -52,6 +53,7 @@ export class RecommendationsComponent implements OnInit , OnDestroy {
      clearFeatures() {
              console.log(5)
              this.featureList=[]
+             this.featureList.push("You haven't selected any features yet!")
              console.log('Feature list');
            }
 }
