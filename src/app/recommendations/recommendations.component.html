@@ -7,7 +7,7 @@
       <button *ngFor="let feature of featureList" type="button" class="btn product-tags btn-primary">{{ feature }}</button>
       <div class="feature-submit">
         <button type="button" class="btn btn-success" style="margin-right: 10px">Submit</button>
-        <button type="button" class="btn btn-danger">Clear</button>
+        <button type="button" class="btn btn-danger" (click)="clearFeatures()">Clear</button>
       </div>
     </div>
   </div>
