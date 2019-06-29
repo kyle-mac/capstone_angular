@@ -1,5 +1,8 @@
-<form class="col-lg-6 offset-lg-3" style="margin-top: 200px;">
+<form class="col-lg-6 offset-lg-3" style="margin-top: 300px;">
   <div class="row justify-content-center">
+      <p>
+        Welcome to your personalized product recommender, select a category below to begin!
+      </p>
       <select>
         <option value="" disabled selected>Select a category</option>
         <option *ngFor="let category of categoriesList" [value]="category.name">{{category}}</option>
