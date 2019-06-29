@@ -1,11 +1,12 @@
 <div class="top-section">
   <div class="card">
-    <div class="card-header text-center"><strong>Click on features from the production selections that interest you.  You're selections will appear below as
-      you click. Hit clear to restart or if finished, click the submit!</strong></div>
+    <div class="card-header text-center"><strong>Click on features from the product search selections that fit your interests.  Your selections will appear below as
+      you click.</strong></div>
     <div class="card-body">
       <p class="card-text">Features You Like:</p>
       <button *ngFor="let feature of featureList" type="button" class="btn product-tags btn-primary">{{ feature }}</button>
       <div class="feature-submit">
+        <p>If you would like to clear your selection press clear below.  Once finished click submit to receive your personalized recommendation!</p>
         <button type="button" class="btn btn-success" style="margin-right: 10px">Submit</button>
         <button type="button" class="btn btn-danger" (click)="clearFeatures()">Clear</button>
       </div>

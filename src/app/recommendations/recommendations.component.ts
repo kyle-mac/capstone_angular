@@ -23,6 +23,7 @@ export class RecommendationsComponent implements OnInit , OnDestroy {
     }
 
     ngOnInit() {
+      this.featureList.push("You haven't selected any features yet!")
       this.recommendationListSubs = this.recommendationApi
         .getRecommendations()
         .subscribe(res => {
@@ -39,7 +40,12 @@ export class RecommendationsComponent implements OnInit , OnDestroy {
 
     saveFeature(feature) {
         console.log('Clicked feature was ' + feature)
-        this.featureList.push(feature)
+        if (this.featureList.includes(feature)) {
+           console.log("Feature already added");
+        }
+        else {
+          this.featureList.push(feature)
+        }
         console.log('Feature list is now ' + this.featureList);
       }
 
