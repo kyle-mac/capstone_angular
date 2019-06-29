@@ -5,14 +5,13 @@
 <div class="card-columns">
   <div *ngFor="let recommendation of recommendationList" class="card" style="height:550px">
     <div class="card-header text-center"><strong>{{ recommendation[1] }}</strong></div>
-    <img class="card-img-bottom" src="{{ recommendation[3] }}" alt="Card image">
+    <img class="card-img-bottom" src="{{ recommendation[3] }}" style="margin-top:10px" alt="Card image">
     <div class="card-body">
       <p class="card-text"><strong>Price</strong>: ${{ recommendation[2] }}</p>
       <p class="card-text"><strong>Description</strong>: {{ recommendation[5] | slice:0:150 }}...</p>
-      <p class="card-text">    <strong>Product Tags</strong>:</p>
-      <button  *ngFor="let recommendation of recommendationList" type="button"
-               class="btn product-tags btn-primary">Primary
-      </button>
+      <p class="card-text">    <strong>Product Features</strong>:</p>
+      <button  *ngFor="let recommendation of recommendationList" type="button" class="btn product-tags btn-primary"
+               (click)="onClickMe()">Primary</button>
     </div>
   </div>
 </div>
