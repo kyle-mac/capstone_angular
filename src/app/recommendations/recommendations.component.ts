@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Recommendation } from '../models/recommendation';
+import { RecommendationApiService } from '../services/recommendations-api.service';
+
+
 
 @Component({
   selector: 'app-recommendations',
   templateUrl: './recommendations.component.html',
   styleUrls: ['./recommendations.component.css']
 })
-export class RecommendationsComponent implements OnInit {
 
-  constructor() { }
+export class RecommendationsComponent implements OnInit , OnDestroy {
 
-  ngOnInit() {
-  }
+    recommendationListSubs: Subscription;
+    recommendationList: Recommendation[];
 
+    constructor(private recommendationApi: RecommendationApiService) {
+    }
+
+    ngOnInit() {
+      this.recommendationListSubs = this.recommendationApi
+        .getRecommendations()
+        .subscribe(res => {
+            this.recommendationList = res;
+          },
+          console.error
+        );
+    }
+
+    ngOnDestroy() {
+      this.recommendationListSubs.unsubscribe();
+    }
 }

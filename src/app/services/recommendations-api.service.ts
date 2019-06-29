@@ -4,9 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { API_URL } from '../env';
+import { Recommendation } from '../models/recommendation'
 
 @Injectable()
-export class CategoryApiService {
+export class RecommendationApiService {
 
   constructor(private http: HttpClient) {
   }
@@ -16,9 +17,9 @@ export class CategoryApiService {
   }
 
   // GET list of public, future events
-  getCategories(): Observable<any> {
+  getRecommendations(): Observable<Recommendation[]> {
     return this.http
-      .get(`${API_URL}/categories`)
-      .catch(CategoryApiService._handleError);
+      .get(`${API_URL}/recommendations/meta_Pet_Supplies`)
+      .catch(RecommendationApiService._handleError);
   }
 }

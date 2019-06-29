@@ -10,6 +10,7 @@ import { CategoryApiService } from '../services/category-api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit , OnDestroy {
 
     categoriesListSubs: Subscription;
