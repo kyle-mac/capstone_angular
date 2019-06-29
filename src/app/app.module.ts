@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list'
+import {MatGridListModule} from '@angular/material/grid-list';
+
 import {HttpClientModule} from '@angular/common/http';
 
 
@@ -26,6 +29,8 @@ import { RecommendationApiService } from './services/recommendations-api.service
     BrowserModule,
     AppRoutingModule,
     MatCardModule,
+    MatListModule,
+    MatGridListModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: '',

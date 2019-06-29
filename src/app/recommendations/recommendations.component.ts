@@ -24,6 +24,7 @@ export class RecommendationsComponent implements OnInit , OnDestroy {
         .getRecommendations()
         .subscribe(res => {
             this.recommendationList = res;
+            console.log(this.recommendationList[0])
           },
           console.error
         );
