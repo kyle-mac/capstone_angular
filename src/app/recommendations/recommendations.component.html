@@ -1,27 +1,21 @@
-<ul>
-  <li *ngFor="let recommendation of recommendationList">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title><strong>{{ recommendation[1] }}</strong></mat-card-title>
-      <mat-card-subtitle><strong>Price</strong>: ${{ recommendation[2] }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{ recommendation[3] }}" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        <strong>Description</strong>: {{ recommendation[5] }}
-      </p>
-      <p>
-        <strong>Keyword Tags</strong>:
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
+<div style="margin-left: 20px;">
+  <h4>  Search Results...</h4>
+</div>
+
+<div class="card-columns">
+  <div *ngFor="let recommendation of recommendationList" class="card" style="height:550px">
+    <img class="card-img-top" src="{{ recommendation[3] }}" alt="Card image">
+    <div class="card-body">
+      <h5 class="card-title">{{ recommendation[1] }}</h5>
+      <p class="card-text"><strong>Price</strong>: ${{ recommendation[2] }}</p>
+      <p class="card-text"><strong>Description</strong>: {{ recommendation[5] | slice:0:150 }}...</p>
+      <p class="card-text">    <strong>Keyword Tags</strong>:</p>
       <button type="button" class="btn btn-primary">Primary</button>
       <button type="button" class="btn btn-primary">Primary</button>
       <button type="button" class="btn btn-primary">Primary</button>
       <button type="button" class="btn btn-primary">Primary</button>
       <button type="button" class="btn btn-primary">Primary</button>
       <button type="button" class="btn btn-primary">Primary</button>
-    </mat-card-actions>
-  </mat-card>
-  </li>
-</ul>
+    </div>
+  </div>
+</div>
