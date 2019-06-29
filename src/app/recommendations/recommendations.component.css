@@ -13,9 +13,29 @@ img {
   margin-bottom: 5px
 }
 
-.card-header {
+.header-same {
   background-color: #1a8cff;
   border: #66b3ff;
   height: 70px;
   color: white
+}
+
+.feature-selection {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.search-results {
+  margin-left: 25px;
+  margin-bottom: 25px;
+  margin-top: 25px
+}
+
+.card-footer {
+  margin-top: 10px;
+}
+
+.top-section {
+  margin-top: 100px;
 }

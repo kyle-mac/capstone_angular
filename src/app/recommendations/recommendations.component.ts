@@ -42,8 +42,4 @@ export class RecommendationsComponent implements OnInit , OnDestroy {
         this.featureList.push(feature)
         console.log('Feature list is now ' + this.featureList);
       }
-
-     presentFeatures(){
-        return this.featureList
-     }
 }

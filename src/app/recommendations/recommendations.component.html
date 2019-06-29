@@ -1,14 +1,27 @@
-<div style="margin-left: 20px;">
-  <h4 style="margin-bottom: 25px;">  Search Results...</h4>
+<div class="top-section">
+  <div class="card">
+    <div class="card-header text-center"><strong>Click on features from the production selections that interest you.  You're selections will appear below as
+      you click. Hit clear to restart or if finished, click the submit!</strong></div>
+    <div class="card-body">
+      <p class="card-text"><strong>Features You Like</strong>:</p>
+      <button *ngFor="let feature of featureList" type="button" class="btn product-tags btn-primary">{{ feature }}</button>
+      <div class="card-footer">
+        <button type="button" class="btn btn-success" style="margin-right: 10px">Submit</button>
+        <button type="button" class="btn btn-danger">Clear</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div>
-  <p> You have selected presentFeatures()</p>
+
+<div class="search-results">
+  <h4>  Search Results...</h4>
 </div>
+
 
 <div class="card-columns">
   <div *ngFor="let recommendation of recommendationList" class="card" style="height:550px">
-    <div class="card-header text-center"><strong>{{ recommendation[1] }}</strong></div>
+    <div class="card-header header-same text-center"><strong>{{ recommendation[1] }}</strong></div>
     <img class="card-img-bottom" src="{{ recommendation[3] }}" style="margin-top:10px" alt="Card image">
     <div class="card-body">
       <p class="card-text"><strong>Price</strong>: ${{ recommendation[2] }}</p>
