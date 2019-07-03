@@ -4,9 +4,11 @@
       you click.</strong></div>
     <div class="card-body">
       <p class="card-text">Products You Like:</p>
-      <button *ngFor="let product of productList" type="button" class="btn product-tags btn-primary">{{ product }}</button>
-      <p class="card-text">Product Features You Like:</p>
-      <button *ngFor="let feature of featureList" type="button" class="btn product-tags btn-primary">{{ feature }}</button>
+      <button *ngFor="let product of productList" type="button" class="btn product-tags btn-primary"
+              (click)="clearProduct(product)">{{ product }}</button>
+      <p class="card-text">Features You Like:</p>
+      <button *ngFor="let feature of featureList" type="button" class="btn product-tags btn-primary"
+              (click)="clearFeature(feature)">{{ feature }}</button>
       <div class="feature-submit">
         <p>If you would like to clear your selection press "Clear All" below.  Once finished click submit to receive your personalized recommendation!</p>
         <a href="/personalRecommendation"  class="btn btn-success" style="margin-right: 10px">Submit</a>
@@ -18,7 +20,7 @@
 
 
 <div class="search-results">
-  <h4>  Product Results</h4>
+  <h4>Product Results</h4>
 </div>
 
 
