@@ -3,12 +3,14 @@
     <div class="card-header text-center"><strong>Click on features from the product search selections that fit your interests.  Your selections will appear below as
       you click.</strong></div>
     <div class="card-body">
-      <p class="card-text">Features You Like:</p>
+      <p class="card-text">Products You Like:</p>
+      <button *ngFor="let product of productList" type="button" class="btn product-tags btn-primary">{{ product }}</button>
+      <p class="card-text">Product Features You Like:</p>
       <button *ngFor="let feature of featureList" type="button" class="btn product-tags btn-primary">{{ feature }}</button>
       <div class="feature-submit">
-        <p>If you would like to clear your selection press clear below.  Once finished click submit to receive your personalized recommendation!</p>
+        <p>If you would like to clear your selection press "Clear All" below.  Once finished click submit to receive your personalized recommendation!</p>
         <a href="/personalRecommendation"  class="btn btn-success" style="margin-right: 10px">Submit</a>
-        <button type="button" class="btn btn-danger" (click)="clearFeatures()">Clear</button>
+        <button type="button" class="btn btn-danger" (click)="clearFeatures()">Clear All</button>
       </div>
     </div>
   </div>
@@ -16,20 +18,23 @@
 
 
 <div class="search-results">
-  <h4>  Search Results...</h4>
+  <h4>  Product Results</h4>
 </div>
 
 
 <div class="card-columns">
   <div *ngFor="let recommendation of recommendationList" class="card" style="height:550px">
-    <div class="card-header header-same text-center"><strong>{{ recommendation[1] }}</strong></div>
+    <div class="card-header header-same text-center">
+      <button type="button" class="btn product-name btn-primary"
+              (click)="saveProduct(recommendation[1])">{{ recommendation[1] }}</button>
+    </div>
     <img class="card-img-bottom" src="{{ recommendation[3] }}" style="margin-top:10px" alt="Card image">
     <div class="card-body">
       <p class="card-text"><strong>Price</strong>: ${{ recommendation[2] }}</p>
       <p class="card-text"><strong>Description</strong>: {{ recommendation[5] | slice:0:150 }}...</p>
       <p class="card-text">    <strong>Product Features</strong>:</p>
       <button *ngFor="let productFeature of ProductFeatures" type="button" class="btn product-tags btn-primary"
-              (click)="saveFeature(productFeature.feature)">{{productFeature.feature}}</button>
+              (click)="saveFeature(productFeature.feature)">{{ productFeature.feature }}</button>
     </div>
   </div>
 </div>

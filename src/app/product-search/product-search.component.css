@@ -13,10 +13,11 @@ img {
   margin-bottom: 5px
 }
 
+
 .header-same {
   background-color: #1a8cff;
   border: #66b3ff;
-  height: 70px;
+  height: 80px;
   color: white
 }
 
@@ -38,4 +39,8 @@ img {
 
 .top-section {
   margin-top: 100px;
+}
+
+h4 {
+  color: grey;
 }

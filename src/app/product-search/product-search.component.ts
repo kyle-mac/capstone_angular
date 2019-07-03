@@ -14,12 +14,14 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
   recommendationListSubs: Subscription;
       recommendationList: Recommendation[];
       ProductFeatures = PRODUCTFEATURES;
+      productList = [];
       featureList = [];
 
       constructor(private recommendationApi: RecommendationApiService) {
       }
 
       ngOnInit() {
+        this.productList.push("You haven't selected any products yet!")
         this.featureList.push("You haven't selected any features yet!")
         this.recommendationListSubs = this.recommendationApi
           .getRecommendations()
@@ -35,6 +37,18 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
         this.recommendationListSubs.unsubscribe();
       }
 
+      saveProduct(product) {
+          console.log('Clicked product was ' + product)
+          this.productList = this.productList.filter(item => item !== "You haven't selected any products yet!");
+          if (this.productList.includes(product)) {
+             console.log("Product already added");
+          }
+          else {
+            this.productList.push(product)
+          }
+          console.log('Product list is now ' + this.productList);
+        }
+
       saveFeature(feature) {
           console.log('Clicked feature was ' + feature)
           this.featureList = this.featureList.filter(item => item !== "You haven't selected any features yet!");
@@ -48,9 +62,10 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
         }
 
        clearFeatures() {
-               console.log(5)
                this.featureList=[]
+               this.productList=[]
                this.featureList.push("You haven't selected any features yet!")
+               this.productList.push("You haven't selected any products yet!")
                console.log('Feature list');
              }
 }
