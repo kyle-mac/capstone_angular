@@ -29,12 +29,12 @@
   <div *ngFor="let recommendation of recommendationList" class="card" style="height:550px">
     <div class="card-header header-same text-center">
       <button type="button" class="btn product-name btn-primary"
-              (click)="saveProduct(recommendation[1])">{{ recommendation[1] }}</button>
+              (click)="saveProduct(recommendation[2])">{{ recommendation[2] | slice:0:100 }}</button>
     </div>
-    <img class="card-img-bottom" src="{{ recommendation[3] }}" style="margin-top:10px" alt="Card image">
+    <img class="card-img-bottom" src="{{ recommendation[4] }}" style="margin-top:10px" alt="Card image">
     <div class="card-body">
-      <p class="card-text"><strong>Price</strong>: ${{ recommendation[2] }}</p>
-      <p class="card-text"><strong>Description</strong>: {{ recommendation[5] | slice:0:150 }}...</p>
+      <p class="card-text"><strong>Price</strong>: ${{ recommendation[3] }}</p>
+      <p class="card-text"><strong>Description</strong>: {{ recommendation[1] | slice:0:150 }}...</p>
       <p class="card-text">    <strong>Product Features</strong>:</p>
       <button *ngFor="let productFeature of ProductFeatures" type="button" class="btn product-tags btn-primary"
               (click)="saveFeature(productFeature.feature)">{{ productFeature.feature }}</button>
