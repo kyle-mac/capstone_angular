@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Category } from '../models/category';
+import { SUBCATEGORIES } from '../models/subcategories';
 import { CategoryApiService } from '../services/category-api.service';
 
 
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit , OnDestroy {
 
     categoriesListSubs: Subscription;
     categoriesList: Category[];
+    subcategories = SUBCATEGORIES
 
     constructor(private categoryApi: CategoryApiService) {
     }
