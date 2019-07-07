@@ -7,7 +7,7 @@ import { API_URL } from '../env';
 import { Recommendation } from '../models/recommendation'
 
 @Injectable()
-export class RecommendationApiService {
+export class FeaturesApiService {
 
   constructor(private http: HttpClient) {
   }
@@ -17,9 +17,9 @@ export class RecommendationApiService {
   }
 
   // GET list of public, future events
-  getRecommendations(): Observable<Recommendation[]> {
+  getFeatures(): Observable<Any[]> {
     return this.http
-      .get<Recommendation[]>(`${API_URL}/recommendations/meta_Toys_And_Games`)
-      .catch(RecommendationApiService._handleError);
+      .get<Any[]>(`${API_URL}/features`)
+      .catch(FeaturesApiService._handleError);
   }
 }

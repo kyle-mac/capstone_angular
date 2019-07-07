@@ -26,23 +26,23 @@ def get_recommendations(category):
     print(recommendations)
     return jsonify(recommendations)
 
-@app.route('/features/<asin>', methods=['GET'])
+@app.route('/features', methods=['GET'])
 
-def get_features(asin):
+def get_features():
 
-    get_query = "SELECT * FROM product_features WHERE asin = '{}'.format(asin)
-    recommendations = query_db(get_query,'GET')
-    print(recommendations)
-    return jsonify(recommendations)
+    get_query = "SELECT * FROM consolidated_features"
+    features = query_db(get_query,'GET')
+    print(features)
+    return jsonify(features)
 
 @app.route('/toyrecommendations/<subcategory>', methods=['GET'])
 
 def get_recommended_toys():
 
     #subcategory logic TBD
-    get_query = "SELECT meta_Toys_and_Games.*, product_features.top_feature_exemplar
+    get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                  FROM meta_Toys_and_Games
-                 INNER JOIN product_features ON meta_Toys_and_Games.asin = product_features.asin"
+                 INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin"""
     recommendations = query_db(get_query,'GET')
     print(recommendations)
     return jsonify(recommendations)

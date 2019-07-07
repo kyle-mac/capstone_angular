@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { Recommendation } from '../models/recommendation';
 import { PRODUCTFEATURES } from '../models/productFeatures';
 import { RecommendationApiService } from '../services/recommendations-api.service';
+import { FeaturesApiService } from '../services/features-api.service';
+
 
 @Component({
   selector: 'app-product-search',
@@ -11,13 +13,17 @@ import { RecommendationApiService } from '../services/recommendations-api.servic
 })
 export class ProductSearchComponent implements OnInit , OnDestroy {
 
-  recommendationListSubs: Subscription;
+      recommendationListSubs: Subscription;
+      featureListSubs: Subscription;
       recommendationList: Recommendation[];
       ProductFeatures = PRODUCTFEATURES;
       productList = [];
       featureList = [];
 
       constructor(private recommendationApi: RecommendationApiService) {
+      }
+
+      constructor(private featuresApi: FeatureApiService) {
       }
 
       ngOnInit() {
