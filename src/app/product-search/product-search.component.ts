@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { Recommendation } from '../models/recommendation';
 import { PRODUCTFEATURES } from '../models/productFeatures';
 import { RecommendationApiService } from '../services/recommendations-api.service';
-import { FeaturesApiService } from '../services/features-api.service';
 
 
 @Component({
@@ -14,7 +13,6 @@ import { FeaturesApiService } from '../services/features-api.service';
 export class ProductSearchComponent implements OnInit , OnDestroy {
 
       recommendationListSubs: Subscription;
-      featureListSubs: Subscription;
       recommendationList: Recommendation[];
       ProductFeatures = PRODUCTFEATURES;
       productList = [];
@@ -23,8 +21,6 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       constructor(private recommendationApi: RecommendationApiService) {
       }
 
-      constructor(private featuresApi: FeatureApiService) {
-      }
 
       ngOnInit() {
         this.productList.push("You haven't selected any products yet!")
