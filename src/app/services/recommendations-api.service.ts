@@ -19,7 +19,7 @@ export class RecommendationApiService {
   // GET list of public, future events
   getRecommendations(): Observable<Recommendation[]> {
     return this.http
-      .get<Recommendation[]>(`${API_URL}/recommendations/meta_Toys_And_Games`)
+      .get<Recommendation[]>(`${API_URL}/toyrecommendations`)
       .catch(RecommendationApiService._handleError);
   }
 }

@@ -39,6 +39,10 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
         this.recommendationListSubs.unsubscribe();
       }
 
+      splitText(string) {
+        return string.split(',');
+        }
+
       saveProduct(product) {
           console.log('Clicked product was ' + product)
           this.productList = this.productList.filter(item => item !== "You haven't selected any products yet!");
