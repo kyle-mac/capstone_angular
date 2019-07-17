@@ -12,7 +12,6 @@ def query_db(query, query_type):
                                   password = db_config['password'],
                                   host = db_config['host'],
                                   port = db_config['port'],
-                                  ssl_disabled = db_config['ssl_disabled'],
                                   database = db_config['database'],
                                   allow_local_infile = db_config['allow_local_infile'])
     cursor = cnx.cursor()
