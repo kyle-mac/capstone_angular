@@ -88,7 +88,7 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
           console.log(this.productList)
           features = this.featureList
           this.httpClient.get('http://ec2-34-201-54-41.compute-1.amazonaws.com:5000/getProductList/features').subscribe(data => {
-                this.productData = data as JSON;
+                this.productData = data as JSON
                 console.log(this.productData);
           }
        }
