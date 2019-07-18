@@ -58,7 +58,7 @@ def get_product_list(features):
     ### Python Logic
     ASINS = [1,2,3]
 
-    return ASINS
+    return jsonify(ASINS)
 
 
 @app.route('/finalResult/<finalProductsList>', methods=['GET'])
