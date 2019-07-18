@@ -20,7 +20,7 @@ export class PersonalRecommendationComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.personalListSubs = this.finalProductApi
-      .getRecommendations()
+      .getFinalResults()
       .subscribe(res => {
           this.recommendationList = res;
           console.log(this.recommendationList[0])
