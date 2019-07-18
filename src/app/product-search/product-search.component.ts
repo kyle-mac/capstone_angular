@@ -85,9 +85,8 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
        storeData() {
             console.log(this.featureList)
             console.log(this.productList)
-            features = this.featureList;
             this.recommendationListSubs = this.recommendationApi
-              .getProductList(features)
+              .getProductList(this.featureList)
               .subscribe(res => {
                   this.productList = res;
                   console.log(this.productList)
