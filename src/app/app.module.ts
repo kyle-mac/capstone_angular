@@ -14,6 +14,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CategoryApiService } from './services/category-api.service';
 import { RecommendationApiService } from './services/recommendations-api.service';
+import { FinalResultApiService } from './services/final-products-api.service';
 import { AboutComponent } from './about/about.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { PersonalRecommendationComponent } from './personal-recommendation/personal-recommendation.component';
