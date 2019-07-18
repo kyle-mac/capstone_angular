@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Recommendation } from '../models/recommendation';
 import { PRODUCTFEATURES } from '../models/productFeatures';
 import { RecommendationApiService } from '../services/recommendations-api.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       featureList = [];
 
       constructor(private recommendationApi: RecommendationApiService) {
+      }
+      constructor(private httpClient: HttpClient) {
       }
 
 
@@ -90,6 +93,6 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
           this.httpClient.get('http://ec2-34-201-54-41.compute-1.amazonaws.com:5000/getProductList/features').subscribe(data => {
                 this.productData = data as JSON
                 console.log(this.productData);
-          }
+          })
        }
 }
