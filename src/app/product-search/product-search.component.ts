@@ -83,10 +83,6 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
                console.log('Feature list');
              }
 
-       clearFeature(feature) {
-          this.featureList = this.featureList.filter(item => item !== feature);
-       }
-
        storeData() {
           console.log(this.featureList)
           console.log(this.productList)
