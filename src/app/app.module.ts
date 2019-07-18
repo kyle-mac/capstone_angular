@@ -49,7 +49,7 @@ import { PersonalRecommendationComponent } from './personal-recommendation/perso
       {path:'personalRecommendation',component: PersonalRecommendationComponent}
     ])
   ],
-  providers: [CategoryApiService, RecommendationApiService],
+  providers: [CategoryApiService, RecommendationApiService, FinalResultApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
