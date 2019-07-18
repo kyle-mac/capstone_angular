@@ -1,15 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Recommendation } from '../models/recommendation';
+import { PRODUCTFEATURES } from '../models/productFeatures';
+import { RecommendationApiService } from '../services/final-products-api.service';
+
+
 
 @Component({
   selector: 'app-personal-recommendation',
   templateUrl: './personal-recommendation.component.html',
   styleUrls: ['./personal-recommendation.component.css']
 })
-export class PersonalRecommendationComponent implements OnInit {
+export class PersonalRecommendationComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  personalListSubs: Subscription;
+  recommendationList: Recommendation[];
+
+  constructor(private finalProductApi: FinalResultApiService) { }
 
   ngOnInit() {
+    this.recommendationListSubs = this.recommendationApi
+      .getRecommendations()
+      .subscribe(res => {
+          this.recommendationList = res;
+          console.log(this.recommendationList[0])
+        },
+        console.error
+      );
+  }
+
+  ngOnDestroy() {
+    this.recommendationListSubs.unsubscribe();
   }
 
 }

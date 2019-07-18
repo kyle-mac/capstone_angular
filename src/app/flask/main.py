@@ -26,6 +26,7 @@ def get_recommendations(category):
     print(recommendations)
     return jsonify(recommendations)
 
+
 @app.route('/features', methods=['GET'])
 
 def get_features():
@@ -34,6 +35,7 @@ def get_features():
     features = query_db(get_query,'GET')
     print(features)
     return jsonify(features)
+
 
 @app.route('/toyrecommendations', methods=['GET'])
 
@@ -48,6 +50,38 @@ def get_recommended_toys():
     print(recommendations)
     return jsonify(recommendations)
 
+
+@app.route('/toyrecommendations', methods=['GET'])
+
+def get_recommended_toys():
+
+    #subcategory logic TBD
+    get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
+                 FROM meta_Toys_and_Games
+                 INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
+                 LIMIT 25"""
+    recommendations = query_db(get_query,'GET')
+    print(recommendations)
+    return jsonify(recommendations)
+
+
+@app.route('/finalResult', methods=['GET'])
+
+def get_final_result(finalProductsList):
+
+    productString = "("
+    for item in finalProductsList:
+      productString += item
+      productString += ","
+    productString += ")"
+
+    get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
+                 FROM meta_Toys_and_Games
+                 INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
+                 WHERE meta_Toys_and_Games.asin IN """ + productString
+    recommendations = query_db(get_query,'GET')
+    print(recommendations)
+    return jsonify(recommendations)
 
 if __name__ == '__main__':
      app.run(host='0.0.0.0')
