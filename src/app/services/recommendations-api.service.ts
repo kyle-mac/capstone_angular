@@ -22,4 +22,11 @@ export class RecommendationApiService {
       .get<Recommendation[]>(`${API_URL}/toyrecommendations`)
       .catch(RecommendationApiService._handleError);
   }
+
+  getProductList(features): Observable<Recommendation[]> {
+    return this.http
+      .get<Recommendation[]>(`${API_URL}/getProductList/features`)
+      .catch(RecommendationApiService._handleError);
+  }
+
 }
