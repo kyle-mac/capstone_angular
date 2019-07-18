@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Recommendation } from '../models/recommendation';
 import { PRODUCTFEATURES } from '../models/productFeatures';
-import { RecommendationApiService } from '../services/final-products-api.service';
+import { FinalResultApiService } from '../services/final-products-api.service';
 
 
 
@@ -19,7 +19,7 @@ export class PersonalRecommendationComponent implements OnInit, OnDestroy {
   constructor(private finalProductApi: FinalResultApiService) { }
 
   ngOnInit() {
-    this.recommendationListSubs = this.recommendationApi
+    this.personalListSubs = this.finalProductApi
       .getRecommendations()
       .subscribe(res => {
           this.recommendationList = res;
@@ -30,7 +30,7 @@ export class PersonalRecommendationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.recommendationListSubs.unsubscribe();
+    this.personalListSubs.unsubscribe();
   }
 
 }
