@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from db_connector import query_db
 from flask_cors import CORS
+from recommendLogic import Recommendation_Logic
 
 
 app = Flask(__name__)
