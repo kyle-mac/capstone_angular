@@ -51,7 +51,7 @@ def get_recommended_toys():
     return jsonify(recommendations)
 
 
-@app.route('/finalResult', methods=['GET'])
+@app.route('/finalResult/<finalProductsList>', methods=['GET'])
 
 def get_final_result(finalProductsList):
 
