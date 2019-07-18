@@ -6,6 +6,16 @@
 # In[1]:
 
 
+def return_recommendations(featureList, productList):
+    #example productList = ['chatter telephone', 'radio flyer wagon']
+    #example featureList = ['minute', 'son', 'house', 'trike']
+
+    #return a list of ASIN values
+    recommendedItems = [B00,B01,B02,B03]
+
+    return recommendedItems
+
+
 import pandas as pd
 import numpy as np
 import gzip
@@ -72,13 +82,13 @@ df = pd.DataFrame(data.items(), columns=['item', 'similar'])
 
 
 #Code to get the recommended items given a list of user items asins, based on text features of the items.
-def findSimilarsText(userItems): 
-    
+def findSimilarsText(userItems):
+
     userCategories = np.unique(dfMeta[dfMeta['asin'].isin(userItems)]['subCateg'].reset_index(drop = True))
     print(userCategories)
-    
+
     similarItems = []
-    
+
     #Find all items with at least one feature in common with the user selected item features
     for item in userItems:
         reviewFeatures = dfTextF[dfTextF['asin'] == item]['feature'].to_list()
@@ -98,21 +108,21 @@ def findSimilarsText(userItems):
             for prod in simProds:
                 if prod != item:
                     similarItems.append(prod)
-                
+
     temp = dfMeta[dfMeta['asin'].isin(similarItems)]
     print('subCategories',Counter(temp['subCateg']))
     selectSimilarItems = temp[temp['subCateg'].isin(userCategories)]['asin'].reset_index(drop = True)
     a = Counter(selectSimilarItems) #Items limited to same subcategory as user picked items
     b = Counter(similarItems) #All similar items irrespective of category
     print('Number of items before and after limiting categories',len(b),len(a))
-    
+
     recommendedItems = []
     for asin,count in a.most_common(4):
         recommendedItems.append(asin)
     for asin,count in b.most_common(2):
         recommendedItems.append(asin)
-    
-    return recommendedItems  
+
+    return recommendedItems
 
 
 # In[10]:
@@ -124,7 +134,7 @@ def findSimilarsText(userItems):
 
 numSelections = 2
 prodList = dfTextF.groupby('asin').agg('count').index.to_list()
-userItems = random.sample(prodList, numSelections) 
+userItems = random.sample(prodList, numSelections)
 print(userItems)
 print("""""")
 
@@ -141,30 +151,30 @@ simItemsList
 def findSimilarsMF(userItems):
     userCategories = np.unique(dfMeta[dfMeta['asin'].isin(userItems)]['subCateg'].reset_index(drop = True))
     similarItems = []
-    
+
     similarItemsDf = df[df['item'].isin(userItems)]['similar'].reset_index(drop = True)
 #     similarItems = [item for sublist in similarItemsDf for item in sublist]
     for i in range(similarItemsDf.shape[0]):
         for item in similarItemsDf[i]:
             similarItems.append(item)
 #     print(len(similarItems),similarItems)
-    
+
     for uItem in userItems:
         similarItems = [x for x in similarItems if x != uItem]
-        
+
     temp = dfMeta[dfMeta['asin'].isin(similarItems)]
 #     print('subCategories',Counter(temp['subCateg']))
     selectSimilarItems = temp[temp['subCateg'].isin(userCategories)]['asin'].reset_index(drop = True)
-    
+
     a = Counter(selectSimilarItems) #Items limited to same subcategory as user picked items
     b = Counter(similarItems) #All similar items irrespective of category
-    
+
     recommendedItems = []
     for asin,count in a.most_common(4):
         recommendedItems.append(asin)
     for asin,count in b.most_common(2):
         recommendedItems.append(asin)
-    
+
     return recommendedItems
 
 

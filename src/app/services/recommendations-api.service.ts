@@ -23,9 +23,9 @@ export class RecommendationApiService {
       .catch(RecommendationApiService._handleError);
   }
 
-  getProductList(features): Observable<Recommendation[]> {
+  getProductList(featureList, productList): Observable<Recommendation[]> {
     return this.http
-      .get<Recommendation[]>(`${API_URL}/getProductList/features`)
+      .get<Recommendation[]>(`${API_URL}/getProductList/featureList/productList`)
       .catch(RecommendationApiService._handleError);
   }
 

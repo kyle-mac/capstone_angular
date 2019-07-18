@@ -52,13 +52,11 @@ def get_recommended_toys():
     return jsonify(recommendations)
 
 
-@app.route('/getProductList/<features>', methods=['GET'])
+@app.route('/getProductList/<featureList>/<productList>', methods=['GET'])
 
-def get_product_list(features):
+def get_product_list(featureList, productList):
 
-    ### Python Logic
-    ASINS = [1,2,3]
-
+    ASINS = Recommendation_Logic.return_recommendations(featureList, productList)
     return jsonify(ASINS)
 
 
