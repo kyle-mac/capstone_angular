@@ -89,7 +89,7 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
             this.recommendationListSubs = this.recommendationApi
               .getProductList(this.featureList)
               .subscribe(res => {
-                  this.productASINs = res;
+                  this.productASINS = res;
                   console.log(this.productASINS)
                 },
                 console.error
