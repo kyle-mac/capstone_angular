@@ -20,7 +20,7 @@ import json
 
 
 #Read the MF features
-with open('neighbors5.json', 'r') as f_:
+with open('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/neighbors5.json', 'r') as f_:
      data = json.load(f_)
 #Convert to a pandas df with item and similar items
 df = pd.DataFrame(data.items(), columns=['item', 'similar'])
@@ -48,7 +48,7 @@ def getDF(path):
 
 
 #Read the Metadata
-dfMeta = getDF('meta_Toys_and_Games.json.gz')
+dfMeta = getDF('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/meta_Toys_and_Games.json.gz')
 dfMeta['subCateg'] = dfMeta['categories'].map(lambda x:x[0][1] if len(x[0]) > 1 else x[0][0])
 
 
@@ -56,7 +56,7 @@ dfMeta['subCateg'] = dfMeta['categories'].map(lambda x:x[0][1] if len(x[0]) > 1 
 
 
 #Read the text features based on reviews
-dfTextF = pd.read_csv('product_features.tar.gz',compression = 'gzip')
+dfTextF = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_features.tar.gz',compression = 'gzip')
 dfTextF.rename(columns = {'product_features.0.csv':'asin'," 'note'":'feature'}, inplace = True)
 
 
@@ -64,8 +64,8 @@ dfTextF.rename(columns = {'product_features.0.csv':'asin'," 'note'":'feature'}, 
 
 
 #Read the text features based on title and description
-product_attribute_features_filepath = './product_attribute_features.harvested.0.csv'
-with open('product_attribute_features.harvested.0.csv', mode='r') as in_f:
+product_attribute_features_filepath = '/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features.harvested.0.csv'
+with open('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features.harvested.0.csv', mode='r') as in_f:
    productTitleDescFeatures = pd.read_csv(in_f, names=['asin','overall','feature'])
 
 
