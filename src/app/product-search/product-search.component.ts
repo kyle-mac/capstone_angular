@@ -18,9 +18,9 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       productList = [];
       featureList = [];
       productASINS = [];
-      MFRec = [];
-      FeatureRec = [];
-      ProdRec = [];
+      textProds = [];
+      MFProds = [];
+      featureProds = [];
 
       constructor(private recommendationApi: RecommendationApiService) {
       }
@@ -93,7 +93,13 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
               .getProductList(this.featureList, this.productList)
               .subscribe(res => {
                   this.productASINS = res;
-                  console.log(this.productASINS['MFProds'])
+                  this.MFProds = this.productASINS['MFProds'];
+                  this.featureProds = this.productASINS['featureProds'];
+                  this.textProds = this.productASINS['textProds'];
+                  console.log(this.productASINS)
+                  console.log(this.MFProds)
+                  console.log(this.featureProds)
+                  console.log(this.textProds)
                   return(this.productASINS)
                 },
                 console.error
