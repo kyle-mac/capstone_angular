@@ -18,6 +18,9 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       productList = [];
       featureList = [];
       productASINS = [];
+      MFRec = [];
+      FeatureRec = [];
+      ProdRec = [];
 
       constructor(private recommendationApi: RecommendationApiService) {
       }
