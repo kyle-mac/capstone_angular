@@ -91,6 +91,7 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
               .subscribe(res => {
                   this.productASINS = res;
                   console.log(this.productASINS)
+                  return(this.productASINS)
                 },
                 console.error
               );
