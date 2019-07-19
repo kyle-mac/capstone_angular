@@ -24,7 +24,6 @@ export class RecommendationApiService {
   }
 
   getProductList(featureList, productList): Observable<Recommendation[]> {
-    console.log(featureList)
     console.log(this.featureList)
     return this.http
       .get<Recommendation[]>(`${API_URL}/getProductList/featureList/productList`)
