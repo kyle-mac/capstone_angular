@@ -184,8 +184,9 @@ def findSimilarsTextOnly(features):
 
 
 def return_recommendations(featureList,productList):
+    print(featureList)
+    print(productList)
     productAsins = dfMeta[dfMeta['title'].isin(productList)]['asin'].to_list()
-#     print(productAsins)
     recommendedItems = {}
     textProds = findSimilarsText(productAsins)
     MFProds = findSimilarsMF(productAsins)
