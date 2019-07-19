@@ -55,7 +55,8 @@ def get_recommended_toys():
 @app.route('/getProductList/<featureList>/<productList>', methods=['GET'])
 
 def get_product_list(featureList, productList):
-
+    print("Flask feature list is {}".format(featureList))
+    print("Flask product list is {}.format(productList))
     ASINS = Recommendation_Logic.return_recommendations(featureList, productList)
     return jsonify(ASINS)
 
