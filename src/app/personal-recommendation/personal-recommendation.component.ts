@@ -4,9 +4,9 @@ import { Recommendation } from '../models/recommendation';
 import { PRODUCTFEATURES } from '../models/productFeatures';
 import { FinalResultApiService } from '../services/final-products-api.service';
 import { ActivatedRoute } from '@angular/router';
-public MF: [];
-public text: [];
-public feature: [];
+public MF: any[];
+public text: any[];
+public feature: any[];
 
 
 
