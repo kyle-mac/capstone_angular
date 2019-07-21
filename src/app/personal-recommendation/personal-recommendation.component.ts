@@ -15,9 +15,9 @@ export class PersonalRecommendationComponent implements OnInit {
 
   personalListSubs: Subscription;
   recommendationList: Recommendation[];
-  MF: any[];
-  text: any[];
-  feature: any[];
+  MF: string;
+  text: string;
+  feature: string;
 
   constructor(private route: ActivatedRoute) {}
 
