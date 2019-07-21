@@ -47,7 +47,7 @@ import { PersonalRecommendationComponent } from './personal-recommendation/perso
       {path:'about', component: AboutComponent},
       {path:'recommendations',component: RecommendationsComponent},
       {path:'productSearch',component: ProductSearchComponent},
-      {path:'personalRecommendation',component: PersonalRecommendationComponent}
+      {path:'personalRecommendation/:MF/:feature/:text',component: PersonalRecommendationComponent}
     ])
   ],
   providers: [CategoryApiService, RecommendationApiService, FinalResultApiService],

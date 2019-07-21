@@ -3,6 +3,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { Recommendation } from '../models/recommendation';
 import { PRODUCTFEATURES } from '../models/productFeatures';
 import { FinalResultApiService } from '../services/final-products-api.service';
+import { ActivatedRoute } from '@angular/router';
+public MF: [];
+public text: [];
+public feature: [];
 
 
 
@@ -16,21 +20,16 @@ export class PersonalRecommendationComponent implements OnInit, OnDestroy {
   personalListSubs: Subscription;
   recommendationList: Recommendation[];
 
-  constructor(private finalProductApi: FinalResultApiService) { }
+constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.personalListSubs = this.finalProductApi
-      .getFinalResults()
-      .subscribe(res => {
-          this.recommendationList = res;
-          console.log(this.recommendationList[0])
-        },
-        console.error
-      );
+     this.MF = this.route.snapshot.paramMap.get('MF');
+     console.log(this.MF)
+     this.text = this.route.snapshot.paramMap.get('text');
+     console.log(this.text)
+     this.feature = this.route.snapshot.paramMap.get('feature');
+     console.log(this.feature)
   }
 
-  ngOnDestroy() {
-    this.personalListSubs.unsubscribe();
-  }
 
 }
