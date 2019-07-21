@@ -22,12 +22,15 @@ export class PersonalRecommendationComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
     ngOnInit() {
-       this.MF = this.route.snapshot.paramMap.get('MF');
-       console.log(this.MF)
-       this.text = this.route.snapshot.paramMap.get('text');
-       console.log(this.text)
-       this.feature = this.route.snapshot.paramMap.get('feature');
-       console.log(this.feature)
+
+        this.route.queryParams.subscribe(params => {
+            this.MF = params['MF'];
+            console.log(this.MF)
+            this.text = params['text'];
+            console.log(this.text)
+            this.feature = params['feature'];
+            console.log(this.feature)
+        });
     }
 
 
