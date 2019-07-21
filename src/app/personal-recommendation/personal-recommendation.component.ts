@@ -11,13 +11,13 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './personal-recommendation.component.html',
   styleUrls: ['./personal-recommendation.component.css']
 })
-export class PersonalRecommendationComponent implements OnInit, OnDestroy {
+export class PersonalRecommendationComponent implements OnInit {
 
   personalListSubs: Subscription;
   recommendationList: Recommendation[];
-  MF = [];
-  text = [];
-  feature = [];
+  MF: any[];
+  text: any[];
+  feature: any[];
 
   constructor(private route: ActivatedRoute) {}
 
