@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request
 from db_connector import query_db
 from flask_cors import CORS
 from recommendLogic import Recommendation_Logic
+import logging
+
 
 
 app = Flask(__name__)
@@ -65,6 +67,10 @@ def get_product_list(featureList, productList):
 
 def get_final_result(finalProductsList):
 
+    logging.basicConfig(filename='myapp.log', level=logging.INFO)
+    logging.info('Started')
+
+
     finalProductsList = finalProductsList.split(",")
     productString = ""
 
@@ -74,13 +80,15 @@ def get_final_result(finalProductsList):
         else:
             productString += ("'" + item + "'" + ",")
 
+    logging.info("Product string is {}".format(productString))
+
 
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                                     FROM meta_Toys_and_Games
                                     INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
                                     WHERE meta_Toys_and_Games.asin IN ({})""".format(productString)
     recommendations = query_db(get_query,'GET')
-    print("Get query is {}".format(get_query))
+    logging.info("Get query is {}".format(get_query))
     print(recommendations)
     return jsonify(recommendations)
 
