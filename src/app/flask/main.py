@@ -89,7 +89,7 @@ def get_final_result(finalProductsList):
                                     WHERE meta_Toys_and_Games.asin IN ({})""".format(productString)
     recommendations = query_db(get_query,'GET')
     logging.info("Get query is {}".format(get_query))
-    print(recommendations)
+    logging.info(recommendations)
     return jsonify(recommendations)
 
 if __name__ == '__main__':
