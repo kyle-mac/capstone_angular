@@ -5,7 +5,7 @@
           Welcome to the personalized toy recommender, select a subcategory and search term!
         </strong>
       </p>
-      <select style="width:180px;" id="mySelect">
+      <select id="mySelect">
         <option value="" disabled selected>Select a subcategory</option>
         <option *ngFor="let subcategory of subcategories" [value]="subcategory.name">{{subcategory.name}}</option>
       </select>
