@@ -10,6 +10,6 @@
         <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
       </select>
       <input type="text" placeholder="Enter your search terms here..." style="margin-right: 10px; width:250px;" #box (keyup)="0">
-      <a [routerLink]="['/productSearch']" [queryParams]="{keywords: box.value}" class="btn btn-primary" (click)="storeData()">Search</a>
+      <a [routerLink]="['/productSearch']" [queryParams]="{keywords: box.value, category: selection}" class="btn btn-primary" (click)="storeData()">Search</a>
   </div>
 </form>

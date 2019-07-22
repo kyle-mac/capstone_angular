@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit , OnDestroy {
     categoriesList: Category[];
     subcategories = SUBCATEGORIES;
     searchTerms = [];
+    selection: string
+
 
     options = [
     'Baby & Toddler Toys',
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit , OnDestroy {
 
     onOptionsSelected(event){
      console.log(event); //option value will be sent as event
+     this.selection = event
     }
 
     constructor(private categoryApi: CategoryApiService) {
