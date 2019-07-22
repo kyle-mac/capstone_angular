@@ -17,9 +17,9 @@ export class FinalResultApiService {
   }
 
   // GET list of public, future events
-  getFinalResults(): Observable<Recommendation[]> {
+  getFinalResults(ASINs): Observable<Recommendation[]> {
     return this.http
-      .get<Recommendation[]>(`${API_URL}/finalResult`)
+      .get<Recommendation[]>(`${API_URL}/finalResult/${ASINs}`)
       .catch(FinalResultApiService._handleError);
   }
 }

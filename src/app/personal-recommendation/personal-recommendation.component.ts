@@ -19,7 +19,7 @@ export class PersonalRecommendationComponent implements OnInit {
   text: string;
   feature: string;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private finalresultApi: FinalResultApiService) {}
 
     ngOnInit() {
 
