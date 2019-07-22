@@ -17,14 +17,14 @@ export class HomeComponent implements OnInit , OnDestroy {
     categoriesListSubs: Subscription;
     categoriesList: Category[];
     subcategories = SUBCATEGORIES;
-    one = [];
+    searchTerms = [];
 
 
     constructor(private categoryApi: CategoryApiService) {
     }
 
     ngOnInit() {
-      this.one.push("one")
+      this.searchTerms.push("one")
       this.categoriesListSubs = this.categoryApi
         .getCategories()
         .subscribe(res => {

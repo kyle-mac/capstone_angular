@@ -22,6 +22,7 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       textProds = [];
       MFProds = [];
       featureProds = [];
+      keywords: string;
 
       constructor(private recommendationApi: RecommendationApiService, private route: ActivatedRoute) {
       }
@@ -37,6 +38,11 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
             },
             console.error
           );
+        this.route.queryParams.subscribe(params => {
+            this.keywords = params['keywords'];
+            console.log(this.keywords)
+            console.error
+                });
       }
 
       ngOnDestroy() {
