@@ -71,10 +71,13 @@ def get_final_result(finalProductsList):
       productString += item
       productString += ","
 
+
+
+
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
-                 FROM meta_Toys_and_Games
-                 INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
-                 WHERE meta_Toys_and_Games.asin IN ({})""".format(productString)
+                                    FROM meta_Toys_and_Games
+                                    INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
+                                    WHERE meta_Toys_and_Games.asin IN ("B004ORV2O8","B00000IZOU","B0094PP0SE")"""
     recommendations = query_db(get_query,'GET')
     print("Get query is {}".format(get_query))
     print(recommendations)
