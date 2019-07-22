@@ -19,6 +19,29 @@ export class HomeComponent implements OnInit , OnDestroy {
     subcategories = SUBCATEGORIES;
     searchTerms = [];
 
+    options = ['Baby & Toddler Toys',
+    'Fan Shop',
+    'Tricycles, Scooters & Wagons',
+    'Electronics for Kids',
+    'Dress Up & Pretend Play',
+    'Grown-Up Toys',
+    'Novelty & Gag Toys',
+    'Learning & Education',
+    'Puzzles',
+    'Sports & Outdoors Play',
+    'Arts & Crafts',
+    'Pary Supplies',
+    'Toy Remote Control & Play Vehicles',
+    'Dolls & Accessories',
+    'Hobbies',
+    'Stuffed Animals & Plush',
+    'Games'];
+
+    optionSelected: any;
+
+    onOptionsSelected(event){
+     console.log(event); //option value will be sent as event
+    }
 
     constructor(private categoryApi: CategoryApiService) {
     }

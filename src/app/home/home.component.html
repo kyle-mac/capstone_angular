@@ -5,9 +5,9 @@
           Welcome to your personalized recommender! Select a subcategory and search term!
         </strong>
       </p>
-      <select style="width:180px;" id="mySelect">
+      <select style="width:180px;" required [(ngModel)]='optionSelected' (ngModelChange)='onOptionsSelected($event)'>
         <option value="" disabled selected>Select a subcategory</option>
-        <option *ngFor="let subcategory of subcategories" [value]="subcategory.name">{{subcategory.name}}</option>
+        <option *ngFor="let option of options" [value]="option.name">{{option.name}}</option>
       </select>
       <input type="text" placeholder="Enter your search terms here..." style="margin-right: 10px; width:250px;" #box (keyup)="0">
       <a [routerLink]="['/productSearch']" [queryParams]="{keywords: box.value}" class="btn btn-primary" (click)="storeData()">Search</a>
