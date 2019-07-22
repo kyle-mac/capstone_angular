@@ -17,14 +17,14 @@ export class HomeComponent implements OnInit , OnDestroy {
     categoriesListSubs: Subscription;
     categoriesList: Category[];
     subcategories = SUBCATEGORIES;
-    MFProds = [];
+    one = [];
 
 
     constructor(private categoryApi: CategoryApiService) {
     }
 
     ngOnInit() {
-      this.MFProds.push("one")
+      this.one.push("one")
       this.categoriesListSubs = this.categoryApi
         .getCategories()
         .subscribe(res => {
