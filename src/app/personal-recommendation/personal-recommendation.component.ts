@@ -13,8 +13,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PersonalRecommendationComponent implements OnInit {
 
-  personalListSubs: Subscription;
-  recommendationList: Recommendation[];
+  MFListSubs: Subscription;
+  featureListSubs: Subscription;
+  textListSubs: Subscription;
+  MFList: Recommendation[];
+  featureList: Recommendation[];
+  textList: Recommendation[];
   MF: string;
   text: string;
   feature: string;
@@ -31,7 +35,16 @@ export class PersonalRecommendationComponent implements OnInit {
             this.feature = params['feature'];
             console.log(this.feature)
         });
-    }
 
+        this.personalListSubs = this.finalresultApi
+                  .getFinalResults(this.MF)
+                  .subscribe(res => {
+                      this.recommendationList = res;
+                      console.log(this.recommendationList[0])
+                    },
+                    console.error
+                  );
+
+    }
 
 }
