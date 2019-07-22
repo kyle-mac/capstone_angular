@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit , OnDestroy {
     subcategories = SUBCATEGORIES;
     searchTerms = [];
 
-    options = ['Baby & Toddler Toys',
+    options = [
+    'Baby & Toddler Toys',
     'Fan Shop',
     'Tricycles, Scooters & Wagons',
     'Electronics for Kids',
