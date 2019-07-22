@@ -37,4 +37,9 @@ export class HomeComponent implements OnInit , OnDestroy {
     ngOnDestroy() {
       this.categoriesListSubs.unsubscribe();
     }
+
+    storeData() {
+    this.value = ((document.getElementById("text") as HTMLInputElement).value);
+    console.log(this.value)
+    }
 }

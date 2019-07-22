@@ -10,6 +10,6 @@
         <option *ngFor="let subcategory of subcategories" [value]="subcategory.name">{{subcategory.name}}</option>
       </select>
       <input type="text" placeholder="Enter your search terms here..." style="margin-right: 10px; width:250px;">
-      <a [routerLink]="['/productSearch']" [queryParams]="{keywords: searchTerms}" class="btn btn-primary">Search</a>
+      <a [routerLink]="['/productSearch']" [queryParams]="{keywords: searchTerms}" class="btn btn-primary" (click)="storeData()">Search</a>
   </div>
 </form>
