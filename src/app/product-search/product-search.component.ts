@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Recommendation } from '../models/recommendation';
 import { PRODUCTFEATURES } from '../models/productFeatures';
 import { RecommendationApiService } from '../services/recommendations-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
