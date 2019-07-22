@@ -16,12 +16,15 @@ export class HomeComponent implements OnInit , OnDestroy {
 
     categoriesListSubs: Subscription;
     categoriesList: Category[];
-    subcategories = SUBCATEGORIES
+    subcategories = SUBCATEGORIES;
+    MFProds = [];
+
 
     constructor(private categoryApi: CategoryApiService) {
     }
 
     ngOnInit() {
+      this.MFProds.push("one")
       this.categoriesListSubs = this.categoryApi
         .getCategories()
         .subscribe(res => {
