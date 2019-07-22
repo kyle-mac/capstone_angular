@@ -70,9 +70,9 @@ def get_final_result(finalProductsList):
 
     for item in finalProductsList:
         if item == finalProductsList[-1]:
-            productString += ("\"" + item + "\"")
+            productString += ("'" + item + "'")
         else:
-            productString += ("\"" + item + "\"" + ",")
+            productString += ("'" + item + "'" + ",")
 
 
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
