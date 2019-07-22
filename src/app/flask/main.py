@@ -77,6 +77,7 @@ def get_final_result(finalProductsList):
                  INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
                  WHERE meta_Toys_and_Games.asin IN """ + productString
     recommendations = query_db(get_query,'GET')
+    print("Get query is {}".format(get_query)
     print(recommendations)
     return jsonify(recommendations)
 
