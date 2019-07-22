@@ -22,7 +22,7 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       MFProds = [];
       featureProds = [];
 
-      constructor(private recommendationApi: RecommendationApiService) {
+      constructor(private recommendationApi: RecommendationApiService. private route: ActivatedRoute) {
       }
 
       ngOnInit() {
