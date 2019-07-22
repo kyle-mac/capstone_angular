@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit , OnDestroy {
     onOptionsSelected(event){
      console.log(event); //option value will be sent as event
      this.selection = event
+     console.log(this.selection);
     }
 
     constructor(private categoryApi: CategoryApiService) {
