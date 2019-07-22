@@ -36,7 +36,7 @@ export class PersonalRecommendationComponent implements OnInit {
             console.log(this.feature)
         });
 
-        this.personalListSubs = this.finalresultApi
+        this.MFListSubs = this.finalresultApi
                   .getFinalResults(this.MF)
                   .subscribe(res => {
                       this.MFList = res;
