@@ -5,11 +5,11 @@
           Welcome to the personalized toy recommender, select a subcategory and search term!
         </strong>
       </p>
-      <select style="width:180px;" testthis>
+      <select style="width:180px;" id="mySelect">
         <option value="" disabled selected>Select a subcategory</option>
         <option *ngFor="let subcategory of subcategories" [value]="subcategory.name">{{subcategory.name}}</option>
       </select>
       <input type="text" placeholder="Enter your search terms here..." style="margin-right: 10px; width:250px;" #box (keyup)="0">
-      <a [routerLink]="['/productSearch']" [queryParams]="{keywords: box.value, test: testthis.value}" class="btn btn-primary" (click)="storeData()">Search</a>
+      <a [routerLink]="['/productSearch']" [queryParams]="{keywords: box.value, selection: mySelect.value}" class="btn btn-primary" (click)="storeData()">Search</a>
   </div>
 </form>
