@@ -65,6 +65,7 @@ def get_product_list(featureList, productList):
 
 def get_final_result(finalProductsList):
 
+    finalProductsList = finalProductsList.split(",")
     productString = "("
     for item in finalProductsList:
       productString += item
