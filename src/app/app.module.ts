@@ -18,6 +18,7 @@ import { FinalResultApiService } from './services/final-products-api.service';
 import { AboutComponent } from './about/about.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { PersonalRecommendationComponent } from './personal-recommendation/personal-recommendation.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -38,6 +39,7 @@ import { PersonalRecommendationComponent } from './personal-recommendation/perso
     MatListModule,
     MatGridListModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: '',
         redirectTo: 'home',
