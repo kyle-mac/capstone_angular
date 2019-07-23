@@ -49,7 +49,7 @@ def get_recommended_toys(keywords, category):
     #subcategory logic TBD
     keywords = keywords.split(",")
     logging.info('Keywords are {}'.format(keywords))
-    logging.info('Subcategory is {}'.format(subcategory))
+    logging.info('Subcategory is {}'.format(category))
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                  FROM meta_Toys_and_Games
                  INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
