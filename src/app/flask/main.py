@@ -40,11 +40,16 @@ def get_features():
     return jsonify(features)
 
 
-@app.route('/toyrecommendations', methods=['GET'])
+@app.route('/toyrecommendations/<keywords>/<category>', methods=['GET'])
 
-def get_recommended_toys():
+def get_recommended_toys(keywords, category):
+
+    logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
     #subcategory logic TBD
+    keywords = keywords.split(",")
+    logging.info('Keywords are {}'.format(keywords))
+    logging.info('Subcategory is {}'.format(subcategory))
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                  FROM meta_Toys_and_Games
                  INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
@@ -68,7 +73,6 @@ def get_product_list(featureList, productList):
 def get_final_result(finalProductsList):
 
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
-    logging.info('Started')
 
 
     finalProductsList = finalProductsList.split(",")
@@ -88,8 +92,6 @@ def get_final_result(finalProductsList):
                                     INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
                                     WHERE meta_Toys_and_Games.asin IN ({})""".format(productString)
     recommendations = query_db(get_query,'GET')
-    logging.info("Get query is {}".format(get_query))
-    logging.info(recommendations)
     return jsonify(recommendations)
 
 if __name__ == '__main__':

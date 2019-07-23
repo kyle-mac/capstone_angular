@@ -28,21 +28,26 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       }
 
       ngOnInit() {
+
         this.productList.push("You haven't selected any products yet!")
         this.featureList.push("You haven't selected any features yet!")
+
+        this.route.queryParams.subscribe(params => {
+            this.keywords = params['keywords'];
+            this.category = params['category'];
+            console.log(this.keywords)
+            console.log(this.category)
+            console.error
+                });
+
         this.recommendationListSubs = this.recommendationApi
-          .getRecommendations()
+          .getRecommendations(this.keywords, this.category)
           .subscribe(res => {
               this.recommendationList = res;
               console.log(this.recommendationList[0])
             },
             console.error
           );
-        this.route.queryParams.subscribe(params => {
-            this.keywords = params['keywords'];
-            console.log(this.keywords)
-            console.error
-                });
       }
 
       ngOnDestroy() {

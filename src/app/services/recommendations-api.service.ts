@@ -17,9 +17,9 @@ export class RecommendationApiService {
   }
 
   // GET list of public, future events
-  getRecommendations(): Observable<Recommendation[]> {
+  getRecommendations(keywords, category): Observable<Recommendation[]> {
     return this.http
-      .get<Recommendation[]>(`${API_URL}/toyrecommendations`)
+      .get<Recommendation[]>(`${API_URL}/toyrecommendations/${keywords}/${category}`)
       .catch(RecommendationApiService._handleError);
   }
 
