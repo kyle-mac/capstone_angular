@@ -13,7 +13,6 @@ app = Flask(__name__)
 CORS(app)
 
 nlp = spacy.load("en_core_web_sm", entity=False)
-df = pd.read_csv("recommendLogic/meta_Toys_and_Games_Categories.csv")
 
 
 @app.route('/categories', methods=['GET'])
@@ -55,6 +54,7 @@ def get_recommended_toys(keywords, category):
     #get_vectors(keywords, nlp)
 
     #subcategory logic
+    df = pd.read_csv("recommendLogic/meta_Toys_and_Games_Categories.csv")
     df = df[df['categories'].str.contains(category)]
     filtered_data = df['asin'][0:25].values
 
