@@ -40,7 +40,7 @@ export class PersonalRecommendationComponent implements OnInit {
                   .getFinalResults(this.MF)
                   .subscribe(res => {
                       this.MFList = res;
-                      console.log(this.MFList[0])
+                      console.log(this.MFList)
                     },
                     console.error
                   );
