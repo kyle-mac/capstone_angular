@@ -4,13 +4,16 @@ from flask_cors import CORS
 from recommendLogic import Recommendation_Logic
 import logging
 import spacy
-
+from nltk.corpus import stopwords
 
 
 app = Flask(__name__)
 CORS(app)
 
 nlp = spacy.load("en_core_web_sm")
+stopWords = set(stopwords.words('english'))
+for stop_word in stopWords:
+    nlp.vocab[stop_word].is_stop = True
 
 
 @app.route('/categories', methods=['GET'])
@@ -49,6 +52,7 @@ def get_recommended_toys(keywords, category):
 
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
     doc = nlp(keywords)
+
 
 
     #subcategory logic TBD
