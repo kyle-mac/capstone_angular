@@ -5,7 +5,7 @@ from recommendLogic import Recommendation_Logic
 import logging
 import spacy
 from nltk.corpus import stopwords
-from spacy_logic import *
+from recommendLogic import spacy_logic
 
 
 app = Flask(__name__)
