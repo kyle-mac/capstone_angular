@@ -3,6 +3,7 @@ from db_connector import query_db
 from flask_cors import CORS
 from recommendLogic import Recommendation_Logic
 import logging
+import spacy
 
 
 
@@ -47,8 +48,8 @@ def get_recommended_toys(keywords, category):
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
     #subcategory logic TBD
-    keywords = keywords.split(",")
-    logging.info('Keywords are {}'.format(keywords))
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(keywords)
     logging.info('Subcategory is {}'.format(category))
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                  FROM meta_Toys_and_Games
