@@ -12,9 +12,6 @@ app = Flask(__name__)
 CORS(app)
 
 nlp = spacy.load("en_core_web_sm", entity=False)
-stopWords = set(stopwords.words('english'))
-for stop_word in stopWords:
-    nlp.vocab[stop_word].is_stop = True
 df = pd.read_csv("recommendLogic/meta_Toys_and_Games_Categories.csv")
 
 
