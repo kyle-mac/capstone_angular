@@ -45,6 +45,22 @@ export class PersonalRecommendationComponent implements OnInit {
                     console.error
                   );
 
-    }
+         this.featureListSubs = this.finalresultApi
+                   .getFinalResults(this.feature)
+                   .subscribe(res => {
+                       this.featureList = res;
+                       console.log(this.featureList)
+                     },
+                     console.error
+                   );
 
+         this.textListSubs = this.finalresultApi
+                   .getFinalResults(this.text)
+                   .subscribe(res => {
+                       this.textList = res;
+                       console.log(this.textList)
+                     },
+                     console.error
+                   );
+    }
 }
