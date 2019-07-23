@@ -67,10 +67,10 @@ def get_recommended_toys(keywords, category):
             select_string += ("'" + val + "'" + ",")
 
     logging.info('Subcategory is {}'.format(category))
-    get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
-                 FROM meta_Toys_and_Games
-                 INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
-                 WHERE meta_Toys_and_Games.asin IN ({})""".format(select_string)
+    get_query = """SELECT meta_Toys_and_Games_Categories2.*, consolidated_features.top_feature
+                 FROM meta_Toys_and_Games_Categories2
+                 INNER JOIN consolidated_features ON meta_Toys_and_Games_Categories2.asin = consolidated_features.asin
+                 WHERE meta_Toys_and_Games_Categories2.asin IN ({})""".format(select_string)
     logging.info('Get query is {}'.format(get_query))
 
     recommendations = query_db(get_query,'GET')
@@ -106,10 +106,10 @@ def get_final_result(finalProductsList):
     logging.info("Product string is {}".format(productString))
 
 
-    get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
-                                    FROM meta_Toys_and_Games
-                                    INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
-                                    WHERE meta_Toys_and_Games.asin IN ({})""".format(productString)
+    get_query = """SELECT meta_Toys_and_Games_Categories2.*, consolidated_features.top_feature
+                                    FROM meta_Toys_and_Games_Categories2
+                                    INNER JOIN consolidated_features ON meta_Toys_and_Games_Categories2.asin = consolidated_features.asin
+                                    WHERE meta_Toys_and_Games_Categories2.asin IN ({})""".format(productString)
     recommendations = query_db(get_query,'GET')
     return jsonify(recommendations)
 
