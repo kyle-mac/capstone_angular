@@ -10,6 +10,9 @@ import spacy
 app = Flask(__name__)
 CORS(app)
 
+nlp = spacy.load("en_core_web_sm")
+doc = nlp(keywords)
+
 
 @app.route('/categories', methods=['GET'])
 
@@ -48,8 +51,6 @@ def get_recommended_toys(keywords, category):
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
     #subcategory logic TBD
-    nlp = spacy.load("en_core_web_sm")
-    doc = nlp(keywords)
     logging.info('Subcategory is {}'.format(category))
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                  FROM meta_Toys_and_Games
