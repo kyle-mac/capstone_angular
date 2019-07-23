@@ -11,7 +11,6 @@ app = Flask(__name__)
 CORS(app)
 
 nlp = spacy.load("en_core_web_sm")
-doc = nlp(keywords)
 
 
 @app.route('/categories', methods=['GET'])
@@ -49,6 +48,8 @@ def get_features():
 def get_recommended_toys(keywords, category):
 
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
+    doc = nlp(keywords)
+
 
     #subcategory logic TBD
     logging.info('Subcategory is {}'.format(category))
