@@ -23,15 +23,7 @@ export class RecommendationsComponent implements OnInit , OnDestroy {
     }
 
     ngOnInit() {
-      this.featureList.push("You haven't selected any features yet!")
-      this.recommendationListSubs = this.recommendationApi
-        .getRecommendations()
-        .subscribe(res => {
-            this.recommendationList = res;
-            console.log(this.recommendationList[0])
-          },
-          console.error
-        );
+
     }
 
     ngOnDestroy() {
