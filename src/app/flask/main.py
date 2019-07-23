@@ -73,6 +73,8 @@ def get_recommended_toys(keywords, category):
                  FROM meta_Toys_and_Games
                  INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
                  WHERE meta_Toys_and_Games.asin IN ({})""".format(select_string)
+    logging.info('Get query is {}'.format(get_query))
+
     recommendations = query_db(get_query,'GET')
     print(recommendations)
     return jsonify(recommendations)
