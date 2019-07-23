@@ -3,22 +3,25 @@
 
   <div class="card" style="height:550px">
     <div class="card-header header-same text-center">MF Recommendations</div>
-    <div class="card-body">
-      <p *ngFor="let recommendation of MF" class="card-text"><strong>{{ recommendation }}</strong></p>
+    <div *ngFor="let recommendation of MFList" class="card-body">
+      <p class="card-text"><strong>{{ recommendation[2] }}</strong></p>
     </div>
   </div>
+
 
   <div class="card" style="height:550px">
     <div class="card-header header-same text-center">Text Recommendations</div>
-    <div class="card-body">
-      <p *ngFor="let recommendation of text" class="card-text"><strong>{{ recommendation }}</strong></p>
+    <div *ngFor="let recommendation of MFList" class="card-body">
+      <p class="card-text"><strong>{{ recommendation[2] }}</strong></p>
     </div>
   </div>
 
+
   <div class="card" style="height:550px">
     <div class="card-header header-same text-center">Feature Recommendations</div>
-    <div class="card-body">
-      <p *ngFor="let recommendation of feature" class="card-text"><strong>{{ recommendation }}</strong></p>
+    <div *ngFor="let recommendation of MFList" class="card-body">
+      <p class="card-text"><strong>{{ recommendation[2] }}</strong></p>
     </div>
   </div>
+
 </div>
