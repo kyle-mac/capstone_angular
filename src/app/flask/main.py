@@ -15,6 +15,7 @@ nlp = spacy.load("en_core_web_sm", entity=False)
 stopWords = set(stopwords.words('english'))
 for stop_word in stopWords:
     nlp.vocab[stop_word].is_stop = True
+df = pd.read_csv("recommendLogic/meta_Toys_and_Games_Categories.csv")
 
 
 @app.route('/categories', methods=['GET'])
@@ -53,16 +54,25 @@ def get_recommended_toys(keywords, category):
 
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
-
     #get_vectors(keywords, nlp)
 
-    #subcategory logic TBD
+    #subcategory logic
+    df = df[df['categories'].str.contains(category)]
+    filtered_data = df['asin'][0:25].values
+
+    select_string = ""
+
+    for val in filtered_data:
+        if val == filtered_data[-1]:
+            select_string += ("'" + val + "'")
+        else:
+            select_string += ("'" + val + "'" + ",")
 
     logging.info('Subcategory is {}'.format(category))
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                  FROM meta_Toys_and_Games
                  INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
-                 LIMIT 25"""
+                 WHERE meta_Toys_and_Games.asin IN ({})""".format(select_string)
     recommendations = query_db(get_query,'GET')
     print(recommendations)
     return jsonify(recommendations)
