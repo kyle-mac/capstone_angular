@@ -5,12 +5,13 @@ from recommendLogic import Recommendation_Logic
 import logging
 import spacy
 from nltk.corpus import stopwords
+from spacy_logic import *
 
 
 app = Flask(__name__)
 CORS(app)
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_sm", entity=False)
 stopWords = set(stopwords.words('english'))
 for stop_word in stopWords:
     nlp.vocab[stop_word].is_stop = True
@@ -51,11 +52,12 @@ def get_features():
 def get_recommended_toys(keywords, category):
 
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
-    doc = nlp(keywords)
 
 
+    #get_vectors(keywords, nlp)
 
     #subcategory logic TBD
+
     logging.info('Subcategory is {}'.format(category))
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                  FROM meta_Toys_and_Games
