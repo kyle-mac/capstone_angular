@@ -4,7 +4,9 @@
   <div class="card" style="height:550px">
     <div class="card-header header-same text-center">MF Recommendations</div>
     <div *ngFor="let recommendation of MFList" class="card-body">
-      <p class="card-text"><strong>{{ recommendation[2] }}</strong></p>
+      <p class="card-text"><strong>Title: {{ recommendation[2] }}</strong></p>
+      <img class="card-img-bottom" src="{{ recommendation[5] }}" style="margin-top:10px" alt="Card image">
+      <p class="card-text"><strong>Tags: {{ recommendation[9] }}</strong></p>
     </div>
   </div>
 
@@ -12,7 +14,9 @@
   <div class="card" style="height:550px">
     <div class="card-header header-same text-center">Text Recommendations</div>
     <div *ngFor="let recommendation of MFList" class="card-body">
-      <p class="card-text"><strong>{{ recommendation[2] }}</strong></p>
+      <p class="card-text"><strong>Title: {{ recommendation[2] }}</strong></p>
+      <img class="card-img-bottom" src="{{ recommendation[5] }}" style="margin-top:10px" alt="Card image">
+      <p class="card-text"><strong>Tags: {{ recommendation[9] }}</strong></p>
     </div>
   </div>
 
@@ -20,7 +24,9 @@
   <div class="card" style="height:550px">
     <div class="card-header header-same text-center">Feature Recommendations</div>
     <div *ngFor="let recommendation of MFList" class="card-body">
-      <p class="card-text"><strong>{{ recommendation[2] }}</strong></p>
+      <p class="card-text"><strong>Title: {{ recommendation[2] }}</strong></p>
+      <img class="card-img-bottom" src="{{ recommendation[5] }}" style="margin-top:10px" alt="Card image">
+      <p class="card-text"><strong>Tags: {{ recommendation[9] }}</strong></p>
     </div>
   </div>
 
