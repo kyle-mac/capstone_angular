@@ -6,7 +6,7 @@
         </strong>
       </p>
       <select style="width:180px;" class='select-option' required [(ngModel)]='optionSelected' name="first" (ngModelChange)='onOptionsSelected($event)'>
-        <option value="" disabled selected>Select a subcategory</option>
+        <option value="Select a Category" disabled selected>Select a subcategory</option>
         <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
       </select>
       <input type="text" placeholder="Enter your search terms here..." style="margin-right: 10px; width:250px;" #box (keyup)="0">
