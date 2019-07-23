@@ -23,6 +23,7 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       MFProds = [];
       featureProds = [];
       keywords: string;
+      category: string;
 
       constructor(private recommendationApi: RecommendationApiService, private route: ActivatedRoute) {
       }
