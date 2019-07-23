@@ -6,6 +6,7 @@ import logging
 import spacy
 from nltk.corpus import stopwords
 from recommendLogic import spacy_logic
+import pandas as pd
 
 
 app = Flask(__name__)
