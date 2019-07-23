@@ -13,7 +13,6 @@ app = Flask(__name__)
 CORS(app)
 
 nlp = spacy.load("en_core_web_sm", entity=False)
-df = pd.read_csv("recommendLogic/meta_Toys_Features.csv")
 
 
 @app.route('/categories', methods=['GET'])
@@ -51,6 +50,9 @@ def get_features():
 def get_recommended_toys(keywords, category):
 
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
+    logging.info('Subcategory is {}'.format(category))
+
+    df = pd.read_csv("recommendLogic/meta_Toys_Features.csv")
 
     def score_sim(query, features):
          doc = nlp(query)
@@ -69,7 +71,6 @@ def get_recommended_toys(keywords, category):
         else:
             select_string += ("'" + val + "'" + ",")
 
-    logging.info('Subcategory is {}'.format(category))
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                  FROM meta_Toys_and_Games
                  INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
