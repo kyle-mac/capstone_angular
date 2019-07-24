@@ -50,6 +50,8 @@ def get_features():
 
 def get_recommended_toys(keywords, category):
 
+    global df
+
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
     logging.info('Subcategory is {}'.format(category))
 
