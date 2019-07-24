@@ -13,6 +13,8 @@
         <p>If you would like to clear your selections press "Clear All" or to return to the search page click "Return Home".  Once finished click submit to receive your personalized recommendation!</p>
         <a [routerLink]="['/personalRecommendation']" [queryParams]="{MF: MFProds, feature: featureProds, text: textProds}" class="btn product-tags btn-success">Search</a>
         <button type="button" class="btn product-tags btn-success" (click)="storeData()">Save</button>
+      </div>
+      <div class="feature-submit">
         <a href="/home"  class="btn btn-info" style="margin-right: 10px">Return Home</a>
         <button type="button" class="btn btn-danger" (click)="clearFeatures()">Clear All</button>
       </div>
@@ -27,7 +29,7 @@
 
 
 <div class="card-columns">
-  <div *ngFor="let recommendation of recommendationList" class="card" style="height:550px">
+  <div *ngFor="let recommendation of recommendationList" class="card" style="height:600px">
     <div class="card-header header-same text-center">
       <button type="button" class="btn product-name btn-primary"
               (click)="saveProduct(recommendation[2])">{{ recommendation[2] | slice:0:100 }}</button>
