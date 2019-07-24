@@ -59,13 +59,15 @@ def get_recommended_toys(keywords, category):
 
     def score_sim(query, description):
          doc = nlp(u'{}'.format(query))
+         log.info(doc)
          doc2 = nlp(u'{}'.format(description))
+         log.info(doc2)
          return doc.similarity(doc2)
 
     df2 = df[df['categories'].str.contains(category)]
     df2 = df[df.description != ""]
     df2['score'] = df.apply(lambda x: score_sim(keywords, x['description']), axis=1)
-    filtered_data = df.sort_values(by=["score"], ascending=False)[0:25]['asin'].values
+    filtered_data = df2.sort_values(by=["score"], ascending=False)[0:25]['asin'].values
 
     select_string = ""
 
