@@ -61,7 +61,6 @@ export class HomeComponent implements OnInit , OnDestroy {
     'Clothing',
     'Luggage & Travel Gear',
     'Backpacks',
-    'Kids' Backpacks',
     'Rocking & Spring Ride-Ons'];
 
 
