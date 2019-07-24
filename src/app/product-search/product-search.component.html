@@ -10,7 +10,7 @@
       <button *ngFor="let feature of featureList" type="button" class="btn product-tags btn-primary"
               (click)="clearFeature(feature)">{{ feature }}</button>
       <div class="feature-submit">
-        <p>Once finished with your selections <strong>click "Save" before</strong> clicking "Search".  Otherwise click to return home or clear your selections!</p>
+        <p>Once finished with your selections <strong>click "Save" before</strong> clicking "Search".  Otherwise click "Return home" to go back or "Clear All" to clear your selections!</p>
         <a [routerLink]="['/personalRecommendation']" [queryParams]="{MF: MFProds, feature: featureProds, text: textProds}" class="btn product-tags btn-success">Search</a>
         <button type="button" class="btn product-tags btn-dark" (click)="storeData()">Save Selections</button>
       </div>
