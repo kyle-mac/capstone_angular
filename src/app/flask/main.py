@@ -60,7 +60,7 @@ def get_recommended_toys(keywords, category):
          return doc.similarity(doc2)
 
     df = df[df['categories'].str.contains(category)]
-    df['score'] = df.apply(lambda x: score_sim(keywords, x['top_feature']), axis=1)
+    df['score'] = df.apply(lambda x: score_sim(keywords, x['description']), axis=1)
     filtered_data = df.sort_values(by=["score"], ascending=False)[0:25]['asin'].values
 
     select_string = ""
