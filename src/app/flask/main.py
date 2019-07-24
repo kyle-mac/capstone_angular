@@ -59,9 +59,9 @@ def get_recommended_toys(keywords, category):
 
     def score_sim(query, description):
          doc = nlp(u'{}'.format(query))
-         log.info(doc)
+         logging.info(doc)
          doc2 = nlp(u'{}'.format(description))
-         log.info(doc2)
+         logging.info(doc2)
          return doc.similarity(doc2)
 
     df2 = df[df['categories'].str.contains(category)]
