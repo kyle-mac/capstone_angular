@@ -13,6 +13,7 @@ app = Flask(__name__)
 CORS(app)
 
 nlp = spacy.load("en_core_web_sm", entity=False)
+df = pd.read_csv("recommendLogic/meta_Toys_Features.csv")
 
 
 @app.route('/categories', methods=['GET'])
@@ -49,40 +50,37 @@ def get_features():
 
 def get_recommended_toys(keywords, category):
 
-    try:
-      logging.basicConfig(filename='myapp.log', level=logging.INFO)
-      logging.info('Subcategory is {}'.format(category))
+    logging.basicConfig(filename='myapp.log', level=logging.INFO)
+    logging.info('Subcategory is {}'.format(category))
 
-      df = pd.read_csv("recommendLogic/meta_Toys_Features.csv")
+    logging.info(df.head())
 
-      def score_sim(query, features):
-           doc = nlp(query)
-           doc2 = nlp(features)
-           return doc.similarity(doc2)
+    def score_sim(query, features):
+         doc = nlp(query)
+         doc2 = nlp(features)
+         return doc.similarity(doc2)
 
-      df = df[df['categories'].str.contains(category)]
-      df['score'] = df.apply(lambda x: score_sim(keywords, x['description']), axis=1)
-      filtered_data = df.sort_values(by=["score"], ascending=False)[0:25]['asin'].values
+    df = df[df['categories'].str.contains(category)]
+    df['score'] = df.apply(lambda x: score_sim(keywords, x['description']), axis=1)
+    filtered_data = df.sort_values(by=["score"], ascending=False)[0:25]['asin'].values
 
-      select_string = ""
+    select_string = ""
 
-      for val in filtered_data:
-          if val == filtered_data[-1]:
-              select_string += ("'" + val + "'")
-          else:
-              select_string += ("'" + val + "'" + ",")
+    for val in filtered_data:
+        if val == filtered_data[-1]:
+            select_string += ("'" + val + "'")
+        else:
+            select_string += ("'" + val + "'" + ",")
 
-      get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
-                   FROM meta_Toys_and_Games
-                   INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
-                   WHERE meta_Toys_and_Games.asin IN ({})""".format(select_string)
-      logging.info('Get query is {}'.format(get_query))
+    get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
+                 FROM meta_Toys_and_Games
+                 INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
+                 WHERE meta_Toys_and_Games.asin IN ({})""".format(select_string)
+    logging.info('Get query is {}'.format(get_query))
 
-      recommendations = query_db(get_query,'GET')
-      print(recommendations)
-      return jsonify(recommendations)
-    except Exception as e:
-      logging.error(e)
+    recommendations = query_db(get_query,'GET')
+    print(recommendations)
+    return jsonify(recommendations)
 
 
 
