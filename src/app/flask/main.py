@@ -12,7 +12,7 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)
 
-nlp = spacy.load("en_core_web_sm", entity=False)
+nlp = spacy.load("en_core_web_md", entity=False)
 df = pd.read_csv("recommendLogic/meta_Toys_Features.csv")
 
 
@@ -65,7 +65,7 @@ def get_recommended_toys(keywords, category):
          return doc.similarity(doc2)
 
     df2 = df[df['categories'].str.contains(category)]
-    df2 = df[df.description != ""]
+    df2 = df[df['description'].notnull()]
     df2['score'] = df.apply(lambda x: score_sim(keywords, x['description']), axis=1)
     filtered_data = df2.sort_values(by=["score"], ascending=False)[0:25]['asin'].values
 
