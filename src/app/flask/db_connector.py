@@ -8,12 +8,13 @@ def query_db(query, query_type):
     config.read('local_db.ini')
     db_config = config['LOCAL_DB']
 
-    cnx = mysql.connector.connect(user = db_config['user'],
-                                  password = db_config['password'],
-                                  host = db_config['host'],
-                                  port = db_config['port'],
-                                  database = db_config['database'],
-                                  allow_local_infile = db_config['allow_local_infile'])
+    config = configparser.ConfigParser()
+
+    cnx = mysql.connector.connect(user = "root",
+                                  password = "###",
+                                  host = "toysdb.cfgxocvigumz.us-east-1.rds.amazonaws.com",
+                                  port = "3306",
+                                  database = "recommender")
     cursor = cnx.cursor()
 
     if query_type == 'POST':
