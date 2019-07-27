@@ -82,10 +82,6 @@ def get_recommended_toys(keywords, category):
 
     recommendations = query_db(get_query,'GET')
     logging.info('Recommendations are {}'.format(recommendations))
-    if recommendations == []:
-      alt_query = "SELECT * FROM meta_and_features ORDER BY overall_rating DESC LIMIT 25;'"
-      recommendations = query_db(alt_query,'GET')
-
     return jsonify(recommendations)
 
 
