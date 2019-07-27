@@ -57,25 +57,137 @@ def get_recommended_toys(keywords, category):
 
     logging.info(df.head())
 
-    def score_sim(query, description):
-         doc = nlp(u'{}'.format(query))
-         logging.info(doc)
-         doc2 = nlp(u'{}'.format(description))
-         logging.info(doc2)
-         return doc.similarity(doc2)
+    stopwords = [i
+    ,me
+    ,my
+    ,myself
+    ,we
+    ,our
+    ,ours
+    ,ourselves
+    ,you
+    ,your
+    ,yours
+    ,yourself
+    ,yourselves
+    ,he
+    ,him
+    ,his
+    ,himself
+    ,she
+    ,her
+    ,hers
+    ,herself
+    ,it
+    ,its
+    ,itself
+    ,they
+    ,them
+    ,their
+    ,theirs
+    ,themselves
+    ,what
+    ,which
+    ,who
+    ,whom
+    ,this
+    ,that
+    ,these
+    ,those
+    ,am
+    ,is
+    ,are
+    ,was
+    ,were
+    ,be
+    ,been
+    ,being
+    ,have
+    ,has
+    ,had
+    ,having
+    ,do
+    ,does
+    ,did
+    ,doing
+    ,a
+    ,an
+    ,the
+    ,and
+    ,but
+    ,if
+    ,or
+    ,because
+    ,as
+    ,until
+    ,while
+    ,of
+    ,at
+    ,by
+    ,for
+    ,with
+    ,about
+    ,against
+    ,between
+    ,into
+    ,through
+    ,during
+    ,before
+    ,after
+    ,above
+    ,below
+    ,to
+    ,from
+    ,up
+    ,down
+    ,in
+    ,out
+    ,on
+    ,off
+    ,over
+    ,under
+    ,again
+    ,further
+    ,then
+    ,once
+    ,here
+    ,there
+    ,when
+    ,where
+    ,why
+    ,how
+    ,all
+    ,any
+    ,both
+    ,each
+    ,few
+    ,more
+    ,most
+    ,other
+    ,some
+    ,such
+    ,no
+    ,nor
+    ,not
+    ,only
+    ,own
+    ,same
+    ,so
+    ,than
+    ,too
+    ,very
+    ,can
+    ,will
+    ,just
+    ,don
+    ,should
+    ,now]
 
-    df2 = df[df['categories'].str.contains(category)]
-    df2 = df[df['description'].notnull()]
-    df2['score'] = df.apply(lambda x: score_sim(keywords, x['description']), axis=1)
-    filtered_data = df2.sort_values(by=["score"], ascending=False)[0:25]['asin'].values
+    words = keywords.split(",")
+    for word in list(words):  # iterating on a copy since removing will mess things up
+        if word in stopwords:
+            words.remove(word)
 
-    select_string = ""
-
-    for val in filtered_data:
-        if val == filtered_data[-1]:
-            select_string += ("'" + val + "'")
-        else:
-            select_string += ("'" + val + "'" + ",")
 
     get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
                  FROM meta_Toys_and_Games
