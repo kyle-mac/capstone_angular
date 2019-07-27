@@ -14,15 +14,23 @@ def query_db(query, query_type):
                                   port = "3306",
                                   database = "recommender")
     cursor = cnx.cursor()
+    cursor2 = cnx.cursor()
 
     if query_type == 'POST':
         cursor.execute(query)
         cnx.commit()
 
     elif query_type == 'GET':
+
         cursor.execute(query)
+
         row = cursor.fetchone()
-        records = cursor.fetchall()
+        if row == None:
+              cursor2.execute("SELECT * FROM meta_and_features LIMIT BY  25")
+              records = cursor2.fetchall()
+        else:
+              records = cursor.fetchall()
+
         return records
 
     else:
@@ -30,3 +38,4 @@ def query_db(query, query_type):
 
     cnx.close()
     cursor.close()
+    cursor2.close()
