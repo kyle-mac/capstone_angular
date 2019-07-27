@@ -21,7 +21,7 @@ def query_db(query, query_type):
         cnx.commit()
 
     elif query_type == 'GET':
-        cursor.execute(query)
+        cursor.execute(query, multi=True)
         records = cursor.fetchall()
         return records
 
