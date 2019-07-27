@@ -188,11 +188,20 @@ def get_recommended_toys(keywords, category):
         if word in stopwords:
             words.remove(word)
 
+    get_query = "SELECT * FROM meta_and_features"
 
-    get_query = """SELECT meta_Toys_and_Games.*, consolidated_features.top_feature
-                 FROM meta_Toys_and_Games
-                 INNER JOIN consolidated_features ON meta_Toys_and_Games.asin = consolidated_features.asin
-                 WHERE meta_Toys_and_Games.asin IN ({})""".format(select_string)
+    if len(words) == 0:
+      get_query += "ORDER BY overall_rating DESC LIMIT 25;"
+    elif len(words) == 1:
+      get_query += "WHERE top_feature LIKE '%{}%'".format(words[0])
+    else:
+      for word in words:
+        if word == words[0]:
+          get_query += "WHERE top_feature LIKE '%{}%'".format(word)
+        else:
+          get_query += "OR top_feature LIKE '%{}%'.format(word) LIMIT 25"
+
+
     logging.info('Get query is {}'.format(get_query))
 
     recommendations = query_db(get_query,'GET')
