@@ -5,8 +5,6 @@ import configparser
 def query_db(query, query_type):
 
     config = configparser.ConfigParser()
-    config.read('local_db.ini')
-    db_config = config['LOCAL_DB']
 
     config = configparser.ConfigParser()
 
