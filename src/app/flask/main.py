@@ -59,10 +59,12 @@ def get_recommended_toys(keywords, category):
 
     stopwords = ["i","me","my","myself","we","our","ours","ourselves","you","your","yours","yourself","yourselves","he","him","his","himself","she","her","hers","herself","it","its","itself","they","them","their","theirs","themselves","what","which","who","whom","this","that","these","those","am","is","are","was","were","be","been","being","have","has","had","having","do","does","did","doing","a","an","the","and","but","if","or","because","as","until","while","of","at","by","for","with","about","against","between","into","through","during","before","after","above","below","to","from","up","down","in","out","on","off","over","under","again","further","then","once","here","there","when","where","why","how","all","any","both","each","few","more","most","other","some","such","no","nor","not","only","own","same","so","than","too","very","can","will","just","don","should","now"]
 
-    words = keywords.split(",")
+    words = keywords.split(" ")
+    print(words)
     for word in list(words):  # iterating on a copy since removing will mess things up
         if word in stopwords:
             words.remove(word)
+    print(words)
 
     get_query = "SELECT * FROM meta_and_features_final WHERE categories LIKE '%{}%'".format(category)
 
@@ -73,9 +75,9 @@ def get_recommended_toys(keywords, category):
     else:
       for word in words:
         if word == words[0]:
-          get_query += " AND (description LIKE '%{}%'".format(word)
+          get_query += " AND (description LIKE '%{}%' ".format(word)
         else:
-          get_query += "OR description LIKE '%{}%').format(word) LIMIT 25"
+          get_query += "OR description LIKE '%{}%') LIMIT 25".format(word)
 
 
     logging.info('Get query is {}'.format(get_query))
