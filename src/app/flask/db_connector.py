@@ -26,7 +26,7 @@ def query_db(query, query_type):
 
         row = cursor.fetchone()
         if row == None:
-              cursor2.execute("SELECT * FROM meta_and_features LIMIT 25")
+              cursor2.execute("SELECT * FROM meta_and_features_final LIMIT 25")
               records = cursor2.fetchall()
         else:
               records = cursor.fetchall()
