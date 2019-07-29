@@ -29,11 +29,11 @@ export class PersonalRecommendationComponent implements OnInit {
 
         this.route.queryParams.subscribe(params => {
             this.MF = params['MF'];
-            console.log(this.MF)
+            console.log('MFs: ' + this.MF)
             this.text = params['text'];
-            console.log(this.text)
+            console.log('Text: ' + this.text)
             this.feature = params['feature'];
-            console.log(this.feature)
+            console.log('Features ' + this.feature)
         });
 
         this.MFListSubs = this.finalresultApi
