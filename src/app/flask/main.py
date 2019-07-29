@@ -115,7 +115,7 @@ def get_final_result(finalProductsList):
     logging.info("Product string is {}".format(productString))
 
 
-    get_query = "SELECT * FROM meta_and_features_final WHERE asin IN ({})".format(productString)
+    get_query = "SELECT * FROM meta_and_features_final_v2 WHERE asin IN ({})".format(productString)
     logging.info("Final query is {}".format(get_query))
     recommendations = query_db(get_query,'GET')
     return jsonify(recommendations)
