@@ -48,25 +48,35 @@ def getDF(path):
 
 
 #Read the Metadata
-dfMeta = getDF('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/meta_Toys_and_Games.json.gz')
-dfMeta['subCateg'] = dfMeta['categories'].map(lambda x:x[0][1] if len(x[0]) > 1 else x[0][0])
+dfMeta = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/meta_Toys_and_Games5.csv')
+
+#old code for the bigger metadata file
+# dfMeta = getDF('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/meta_Toys_and_Games.json.gz')
+# dfMeta['subCateg'] = dfMeta['categories'].map(lambda x:x[0][1] if len(x[0]) > 1 else x[0][0])
 
 
 # In[5]:
 
 
 #Read the text features based on reviews
-dfTextF = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_features.tar.gz',compression = 'gzip')
-dfTextF.rename(columns = {'product_features.0.csv':'asin'," 'note'":'feature'}, inplace = True)
+dfTextF = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_review_features.csv')
+
+#old files before we created the tfidf features
+# dfTextF = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_features.tar.gz',compression = 'gzip')
+# dfTextF.rename(columns = {'product_features.0.csv':'asin'," 'note'":'feature'}, inplace = True)
 
 
 # In[6]:
 
 
 #Read the text features based on title and description
-product_attribute_features_filepath = '/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features.harvested.0.csv'
-with open('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features.harvested.0.csv', mode='r') as in_f:
-   productTitleDescFeatures = pd.read_csv(in_f, names=['asin','overall','feature'])
+
+productTitleDescFeatures = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features.csv')
+
+#old files before we created the tfidf features
+# product_attribute_features_filepath = '/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features.harvested.0.csv'
+# with open('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features.harvested.0.csv', mode='r') as in_f:
+#    productTitleDescFeatures = pd.read_csv(in_f, names=['asin','overall','feature'])
 
 
 # In[7]:
@@ -110,7 +120,7 @@ def findSimilarsText(userItems):
     recommendedItems = []
     for asin,count in a.most_common(4):
         recommendedItems.append(asin)
-    for asin,count in b.most_common(2):
+    for asin,count in b.most_common(3):
         recommendedItems.append(asin)
     
     return recommendedItems
@@ -144,7 +154,7 @@ def findSimilarsMF(userItems):
     recommendedItems = []
     for asin,count in a.most_common(4):
         recommendedItems.append(asin)
-    for asin,count in b.most_common(2):
+    for asin,count in b.most_common(3):
         recommendedItems.append(asin)
     
     return recommendedItems
@@ -174,7 +184,7 @@ def findSimilarsTextOnly(features):
     b = Counter(similarItems)
     
     recommendedItems = []
-    for asin,count in b.most_common(6):
+    for asin,count in b.most_common(7):
         recommendedItems.append(asin)
         
     return recommendedItems
