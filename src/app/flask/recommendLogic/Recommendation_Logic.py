@@ -48,7 +48,7 @@ def getDF(path):
 
 
 #Read the Metadata
-dfMeta = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/meta_Toys_and_Games6.csv')
+dfMeta = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/meta_Toys_and_Games5.csv')
 
 #old code for the bigger metadata file
 # dfMeta = getDF('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/meta_Toys_and_Games.json.gz')
