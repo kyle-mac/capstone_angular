@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit , OnDestroy {
 
     ngOnInit() {
       this.searchTerms.push("one")
+      this.selection = "Games"
       this.categoriesListSubs = this.categoryApi
         .getCategories()
         .subscribe(res => {
