@@ -12,3 +12,11 @@ img {
 .finalRecs {
   margin-top: 100px;
 }
+
+
+.header-same {
+  background-color: #1a8cff;
+  border: #66b3ff;
+  height: 80px;
+  color: white
+}
