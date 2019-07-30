@@ -27,7 +27,7 @@
 
 
 <div class="card-columns">
-  <div *ngFor="let recommendation of recommendationList" class="card" style="height:600px">
+  <div *ngFor="let recommendation of recommendationList" class="card" style="height:800px">
     <div class="card-header header-same text-center">
       <button type="button" class="btn product-name btn-primary"
               (click)="saveProduct(recommendation[2])">{{ recommendation[2] | slice:0:100 }}</button>
