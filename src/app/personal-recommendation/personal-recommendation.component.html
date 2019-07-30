@@ -4,8 +4,8 @@
   <div class="card" style="height:2400px">
     <div class="card-header header-same text-center">MF Recommendations</div>
     <div *ngFor="let recommendation of MFList; let i = index" class="card-body">
-      <p class="card-text text-center"><strong> Recommended Product {{ i+1 }}:</strong></p>
-      <button type="button" class="btn product-name btn-primary text-center"
+      <p class="card-text text-center"><u><strong> Recommended Product {{ i+1 }}:</strong></u></p>
+      <button type="button" class="btn product-name btn-primary"
               >{{ recommendation[2] }}</button>
       <img class="card-img-bottom" src="{{ recommendation[4] }}" style="margin-top:10px" alt="Card image">
       <p class="card-text"><strong>Review Features:</strong>:</p>
