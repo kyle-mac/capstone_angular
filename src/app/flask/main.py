@@ -68,7 +68,7 @@ def get_recommended_toys(keywords, category):
     get_query = "SELECT * FROM meta_and_features_final_v4 WHERE categories LIKE '%{}%'".format(category)
 
     if len(words) == 0:
-      get_query += " ORDER BY overall_rating DESC LIMIT 25;"
+      get_query += " ORDER BY overall_rating DESC"
     elif len(words) == 1:
       get_query += " AND description LIKE '%{}%'".format(words[0])
     else:
@@ -76,7 +76,8 @@ def get_recommended_toys(keywords, category):
         if word == words[0]:
           get_query += " AND (description LIKE '%{}%' ".format(word)
         else:
-          get_query += "OR description LIKE '%{}%') LIMIT 25".format(word)
+          get_query += "OR description LIKE '%{}%')".format(word)
+    get_query += " AND WHERE review_feature!= '' LIMIT 25;"
 
 
     logging.info('Get query is {}'.format(get_query))
