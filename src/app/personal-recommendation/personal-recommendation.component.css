@@ -20,3 +20,8 @@ img {
   height: 80px;
   color: white
 }
+
+.product-tags {
+  margin-right: 5px;
+  margin-bottom: 5px
+}
