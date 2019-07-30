@@ -77,7 +77,7 @@ def get_recommended_toys(keywords, category):
           get_query += " AND (description LIKE '%{}%' ".format(word)
         else:
           get_query += "OR description LIKE '%{}%')".format(word)
-    get_query += " AND WHERE review_feature!= '' LIMIT 25;"
+    get_query += " AND review_feature!= '' LIMIT 25;"
 
 
     logging.info('Get query is {}'.format(get_query))
