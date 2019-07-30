@@ -18,7 +18,7 @@
   <div class="card" style="height:1200px">
     <div class="card-header header-same text-center">Text Recommendations</div>
     <div *ngFor="let recommendation of textList; let i = index" class="card-body">
-      <p class="card-text"><strong> Product Recommendation {{ i }}:</strong></p>
+      <p class="card-text"><strong> Product Recommendation {{ i+1 }}:</strong></p>
       <button type="button" class="btn product-name btn-primary"
       >{{ recommendation[2] }}</button>
       <img class="card-img-bottom" src="{{ recommendation[4] }}" style="margin-top:10px" alt="Card image">
@@ -32,7 +32,7 @@
   <div class="card" style="height:1200px">
     <div class="card-header header-same text-center">Feature Recommendations</div>
     <div *ngFor="let recommendation of featureList; let i = index" class="card-body">
-      <p class="card-text"><strong> Product Recommendation {{ i }}:</strong></p>
+      <p class="card-text"><strong> Product Recommendation {{ i+1 }}:</strong></p>
       <button type="button" class="btn product-name btn-primary"
       >{{ recommendation[2] }}</button>
       <img class="card-img-bottom" src="{{ recommendation[4] }}" style="margin-top:10px" alt="Card image">
