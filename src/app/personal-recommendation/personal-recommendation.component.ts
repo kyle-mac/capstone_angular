@@ -63,4 +63,9 @@ export class PersonalRecommendationComponent implements OnInit {
                      console.error
                    );
     }
+
+    splitText(string) {
+      return string.split(',');
+      }
+
 }
