@@ -1,9 +1,11 @@
 <form class="col-lg-6 offset-lg-3" style="margin-top: 300px;">
   <div class="row justify-content-center">
       <p>
-        <strong>
-          Welcome to your personalized recommender! Select a subcategory and search term!
-        </strong>
+          Welcome to your Shop-'N-Sight!
+      </p>
+      <p>
+
+        *Note <strong> you must both <strong> select a subcategory and enter a search term for results to work!*
       </p>
       <select style="width:180px;" class='select-option' required [(ngModel)]='optionSelected' name="first" (ngModelChange)='onOptionsSelected($event)'>
         <option value="Select a Category" disabled selected>Select a subcategory</option>
