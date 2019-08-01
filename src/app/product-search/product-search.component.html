@@ -10,6 +10,7 @@
       <button *ngFor="let feature of featureList" type="button" class="btn product-tags btn-primary"
               (click)="clearFeature(feature)">{{ feature }}</button>
       <div class="feature-submit">
+        <p class="card-text">Made a Mistake?</p>
         <a href="/home"  class="btn btn-info" style="margin-right: 10px">Return Home</a>
         <button type="button" class="btn btn-danger" (click)="clearFeatures()">Clear Selections</button>
         <p style="margin-top:10px">Once finished with your selections <strong>click "Save" before</strong> clicking "Search".  Otherwise click "Return home" to go back or "Clear All" to clear your selections!</p>
