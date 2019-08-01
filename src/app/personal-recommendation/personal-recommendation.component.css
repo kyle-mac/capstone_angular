@@ -9,6 +9,14 @@ img {
 }
 
 
+.button {
+  display: block;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto
+}
+
 .finalRecs {
   margin-top: 100px;
 }
