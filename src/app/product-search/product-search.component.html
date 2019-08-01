@@ -11,8 +11,8 @@
               (click)="clearFeature(feature)">{{ feature }}</button>
       <div class="feature-submit">
         <a href="/home"  class="btn btn-info" style="margin-right: 10px">Return Home</a>
-        <button type="button" class="btn btn-danger" (click)="clearFeatures()">Clear All</button>
-        <p>Once finished with your selections <strong>click "Save" before</strong> clicking "Search".  Otherwise click "Return home" to go back or "Clear All" to clear your selections!</p>
+        <button type="button" class="btn btn-danger" (click)="clearFeatures()">Clear Selections</button>
+        <p style="margin-top:10px">Once finished with your selections <strong>click "Save" before</strong> clicking "Search".  Otherwise click "Return home" to go back or "Clear All" to clear your selections!</p>
         <button type="button" class="btn product-tags btn-dark" (click)="storeData()">Save Selections</button>
         <a [routerLink]="['/personalRecommendation']" [queryParams]="{MF: MFProds, feature: featureProds, text: textProds}" class="btn product-tags btn-success">Search</a>
       </div>
