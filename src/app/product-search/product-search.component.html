@@ -13,9 +13,9 @@
         <p class="card-text">Made a Mistake? Click below to go back or to clear your selections</p>
         <a href="/home"  class="btn btn-info" style="margin-right: 10px">Return Home</a>
         <button type="button" class="btn btn-danger" (click)="clearFeatures()">Clear Selections</button>
-        <p style="margin-top:10px">Done Selecting? <strong>Make sure to click "Save"!</strong> Then proceed by clicking "Search".</p>
+        <p style="margin-top:10px">Done Selecting? <strong>Make sure to click "Save"!</strong> before clicking "Get Recommendations".</p>
         <button type="button" class="btn product-tags btn-dark" (click)="storeData()">Save Selections</button>
-        <a [routerLink]="['/personalRecommendation']" [queryParams]="{MF: MFProds, feature: featureProds, text: textProds}" class="btn product-tags btn-success">Search</a>
+        <a [routerLink]="['/personalRecommendation']" [queryParams]="{MF: MFProds, feature: featureProds, text: textProds}" class="btn product-tags btn-success" style="20px margin-left">Get Recommendations</a>
       </div>
     </div>
   </div>
