@@ -9,8 +9,6 @@
               >{{ recommendation[2] }}</button>
       <img class="card-img-bottom" src="{{ recommendation[4] }}" style="margin-top:10px" alt="Card image">
       <p class="card-text"><strong>Description</strong>: {{ recommendation[1] | slice:0:150 }}...</p>
-      <button *ngFor="let feature of splitText(recommendation[13])" type="button" class="btn product-tags btn-primary"
-              (click)="saveFeature(feature)">{{ feature }}</button>
     </div>
   </div>
 
@@ -23,8 +21,6 @@
       >{{ recommendation[2] }}</button>
       <img class="card-img-bottom" src="{{ recommendation[4] }}" style="margin-top:10px" alt="Card image">
       <p class="card-text"><strong>Description</strong>: {{ recommendation[1] | slice:0:150 }}...</p>
-      <button *ngFor="let feature of splitText(recommendation[13])" type="button" class="btn product-tags btn-primary"
-              (click)="saveFeature(feature)">{{ feature }}</button>
     </div>
   </div>
 
@@ -37,8 +33,6 @@
       >{{ recommendation[2] }}</button>
       <img class="card-img-bottom" src="{{ recommendation[4] }}" style="margin-top:10px" alt="Card image">
       <p class="card-text"><strong>Description</strong>: {{ recommendation[1] | slice:0:150 }}...</p>
-      <button *ngFor="let feature of splitText(recommendation[13])" type="button" class="btn product-tags btn-primary"
-              (click)="saveFeature(feature)">{{ feature }}</button>
     </div>
   </div>
 
