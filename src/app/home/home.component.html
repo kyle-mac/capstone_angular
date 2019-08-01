@@ -1,16 +1,17 @@
 <form class="col-lg-6 offset-lg-3" style="margin-top: 300px;">
   <div class="row justify-content-center">
       <p>
-          Welcome to Shop-'N-Sight! The place to help you find the best toys in the world
+          Welcome to Shop-'N-Sight, the place to help you find the best toys in the world
     </p>
-      <p>
-        ***For search results to appear you must <strong> select both a subcategory and enter a search term</strong>!***
-      </p>
+
       <select style="width:180px;" class='select-option' required [(ngModel)]='optionSelected' name="first" (ngModelChange)='onOptionsSelected($event)'>
         <option value="Select a Category" disabled selected>Select a subcategory</option>
         <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
       </select>
       <input type="text" placeholder="Enter your search terms here..." style="margin-right: 10px; width:250px;" #box (keyup)="0">
       <a [routerLink]="['/productSearch']" [queryParams]="{keywords: box.value, category: selection}" class="btn btn-primary" (click)="storeData()">Search</a>
+    <p>
+      ***For search results to appear you must <strong> select both a subcategory and enter a search term</strong>!***
+    </p>
   </div>
 </form>
