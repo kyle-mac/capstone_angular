@@ -10,7 +10,7 @@
       </select>
       <input type="text" placeholder="Enter your search terms here..." style="margin-right: 10px; width:250px;" #box (keyup)="0">
       <a [routerLink]="['/productSearch']" [queryParams]="{keywords: box.value, category: selection}" class="btn btn-primary" (click)="storeData()">Search</a>
-    <p>
+    <p style="margin-top:10px">
       ***For search results to appear you must <strong> select both a subcategory and enter a search term</strong>!***
     </p>
   </div>
