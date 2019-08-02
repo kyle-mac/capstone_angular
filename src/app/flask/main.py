@@ -65,7 +65,7 @@ def get_recommended_toys(keywords, category):
             words.remove(word)
     print(words)
 
-    get_query = "SELECT * FROM meta_age_features WHERE categories LIKE '%{}%'".format(category)
+    get_query = "SELECT * FROM meta_and_features_final_v4 WHERE categories LIKE '%{}%'".format(category)
 
 #     get_query += " AND overall_rating_x >= 3"
     print(len(words))
