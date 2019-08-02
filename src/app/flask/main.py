@@ -65,19 +65,29 @@ def get_recommended_toys(keywords, category):
             words.remove(word)
     print(words)
 
-    get_query = "SELECT * FROM meta_and_features_final_v4 WHERE categories LIKE '%{}%'".format(category)
+    get_query = "SELECT * FROM meta_age_features WHERE categories LIKE '%{}%'".format(category)
+
+#     get_query += " AND overall_rating_x >= 3"
+    print(len(words))
 
     if len(words) == 0:
-      get_query += " ORDER BY overall_rating DESC"
-    elif len(words) == 1:
-      get_query += " AND description LIKE '%{}%'".format(words[0])
+        get_query += " ORDER BY overall_rating_x DESC LIMIT 25;"
+    elif (len(words) == 1):
+        get_query += " AND (description LIKE '%{}%') OR (brand LIKE '%{}%') LIMIT 25".format(words[0],words[0])
     else:
-      for word in words:
-        if word == words[0]:
-          get_query += " AND (description LIKE '%{}%' ".format(word)
-        else:
-          get_query += "OR description LIKE '%{}%')".format(word)
-    get_query += " AND review_feature != '' AND attribute_feature != '' LIMIT 25;"
+        for word in words:
+            if word == words[0]:
+                get_query += " AND ((description LIKE '%{}%') ".format(words[0])
+            else:
+                get_query += "OR (description LIKE '%{}%') ".format(word)
+            get_query += "OR (brand LIKE '%{}%') ".format(word)
+
+        get_query += ")"
+
+#     if a:
+#         get_query += " AND (ages LIKE '%{}%') ".format(ageString)
+
+        get_query += " LIMIT 25".format(word)
 
 
     logging.info('Get query is {}'.format(get_query))
