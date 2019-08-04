@@ -71,7 +71,7 @@ dfTextF = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLo
 
 #Read the text features based on title and description
 
-productTitleDescFeatures = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features.csv')
+productTitleDescFeatures = pd.read_csv('/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features_initial.csv')
 
 #old files before we created the tfidf features
 # product_attribute_features_filepath = '/home/ec2-user/capstone_angular/src/app/flask/recommendLogic/product_attribute_features.harvested.0.csv'

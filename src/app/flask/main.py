@@ -65,7 +65,7 @@ def get_recommended_toys(keywords, category):
             words.remove(word)
     print(words)
 
-    get_query = "SELECT * FROM meta_and_features_final_v4 WHERE categories LIKE '%{}%'".format(category)
+    get_query = "SELECT * FROM final_metadata WHERE categories LIKE '%{}%'".format(category)
 
 #     get_query += " AND overall_rating_x >= 3"
     print(len(words))
@@ -126,7 +126,7 @@ def get_final_result(finalProductsList):
     logging.info("Product string is {}".format(productString))
 
 
-    get_query = "SELECT * FROM meta_and_features_final_v4 WHERE asin IN ({})".format(productString)
+    get_query = "SELECT * FROM final_metadata WHERE asin IN ({})".format(productString)
     logging.info("Final query is {}".format(get_query))
     recommendations = query_db(get_query,'GET')
     return jsonify(recommendations)
