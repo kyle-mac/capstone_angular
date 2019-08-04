@@ -37,6 +37,7 @@
     <div class="card-body">
       <p class="card-text"><strong>Price</strong>: ${{ recommendation[3] }}</p>
       <p class="card-text"><strong>Description</strong>: {{ recommendation[1] | slice:0:150 }}...</p>
+      <p class="card-text"><strong>Product Features:</strong></p>
       <button *ngFor="let feature of splitText(recommendation[10])" type="button" class="btn product-tags btn-primary"
               (click)="saveFeature(feature)">{{ feature }}</button>
       <button *ngFor="let feature of splitText(recommendation[13])" type="button" class="btn product-tags btn-primary"
