@@ -57,14 +57,8 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
         this.recommendationListSubs.unsubscribe();
       }
 
-      function isNotEmpty(element, index, array) {
-         return (element != " ");
-      }
-
       splitText(string) {
-        string = string.split(',')
-        string = string.filter(isNotEmpty)
-        return string;
+        return string.split(',').filter(item => item !== " ");
         }
 
 
