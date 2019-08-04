@@ -58,7 +58,7 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       }
 
       splitText(string) {
-        return string.split('',').filter(item => item !== " ");
+        return string.split(',').filter(item => item !== " ");
         }
 
       saveProduct(product) {
