@@ -57,9 +57,17 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
         this.recommendationListSubs.unsubscribe();
       }
 
+      function isNotEmpty(element, index, array) {
+         return (element != " ");
+      }
+
       splitText(string) {
-        return string.split(',');
+        string = string.split(',')
+        string = string.filter(isNotEmpty)
+        return string;
         }
+
+
 
       saveProduct(product) {
           console.log('Clicked product was ' + product)
