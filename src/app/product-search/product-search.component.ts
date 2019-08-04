@@ -40,7 +40,7 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
             console.error
                 });
 
-        this.featureList.push(this.keywords.split(' '))
+        this.featureList = (this.keywords.split(' '))
 
         this.recommendationListSubs = this.recommendationApi
           .getRecommendations(this.keywords, this.category)
