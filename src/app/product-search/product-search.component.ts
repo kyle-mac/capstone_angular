@@ -41,6 +41,8 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
                 });
 
         this.featureList = (this.keywords.split(' '))
+        this.featureList = this.featureList.map(function(x) { return ("'"+x+"'"); });
+
         this.featureList.map(addQuotes);
         this.featureList = this.productList.filter(item => item !== "You haven't selected any products yet!");
 
@@ -63,11 +65,6 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       splitText(string) {
         return string.split(',');
         }
-
-      addQuotes(string) {
-        string = "'"+string+"'"
-        return string;
-      }
 
       saveProduct(product) {
           console.log('Clicked product was ' + product)
