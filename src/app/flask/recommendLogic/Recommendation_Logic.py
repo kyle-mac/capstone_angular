@@ -97,7 +97,7 @@ def findSimilarsText(userItems):
             simProds = dfTextF[dfTextF['feature'] == feature]['asin'].to_list()
 #             print(feature,len(simProds))
             for prod in simProds:
-                if prod != item:
+#                 if prod != item:
                     similarItems.append(prod)
 
 
@@ -107,7 +107,7 @@ def findSimilarsText(userItems):
             simProds = productTitleDescFeatures[productTitleDescFeatures['feature'] == feature]['asin'].to_list()
 #             print(feature,len(simProds))
             for prod in simProds:
-                if prod != item:
+#                 if prod != item:
                     similarItems.append(prod)
 
     temp = dfMeta[dfMeta['asin'].isin(similarItems)]
@@ -117,7 +117,7 @@ def findSimilarsText(userItems):
     b = Counter(similarItems) #All similar items irrespective of category
 #     print('Number of items before and after limiting categories',len(b),len(a))
 
-    recommendedItems = []
+    recommendedItems = userItems.copy()
     for asin,count in a.most_common(4):
         recommendedItems.append(asin)
     for asin,count in b.most_common(3):
@@ -141,8 +141,8 @@ def findSimilarsMF(userItems):
             similarItems.append(item)
 #     print(len(similarItems),similarItems)
 
-    for uItem in userItems:
-        similarItems = [x for x in similarItems if x != uItem]
+#     for uItem in userItems:
+#         similarItems = [x for x in similarItems if x != uItem]
 
     temp = dfMeta[dfMeta['asin'].isin(similarItems)]
 #     print('subCategories',Counter(temp['subCateg']))
@@ -151,7 +151,7 @@ def findSimilarsMF(userItems):
     a = Counter(selectSimilarItems) #Items limited to same subcategory as user picked items
     b = Counter(similarItems) #All similar items irrespective of category
 
-    recommendedItems = []
+    recommendedItems = userItems.copy()
     for asin,count in a.most_common(4):
         recommendedItems.append(asin)
     for asin,count in b.most_common(3):
@@ -163,29 +163,41 @@ def findSimilarsMF(userItems):
 # In[9]:
 
 
-def findSimilarsTextOnly(features):
+def findSimilarsTextOnly(features,userItems):
 
     similarItems = []
 
     #Find all items with at least one feature in common with the user selected text features
     for feature in features:
+        feature = " " + feature
+#         feature = '" ' + feature + '"'
+        print(feature)
         simProds = dfTextF[dfTextF['feature'] == feature]['asin'].to_list()
         print(feature,len(simProds))
         for prod in simProds:
             similarItems.append(prod)
 
-
+    coreAsins = []
+    i = 0
     for feature in features:
-        feature = " " + feature
+        i += 1
         simProds = productTitleDescFeatures[productTitleDescFeatures['feature'] == feature]['asin'].to_list()
         print(feature,len(simProds))
         for prod in simProds:
             similarItems.append(prod)
+            if i <= 2:
+                coreAsins.append(prod)
 
-    b = Counter(similarItems)
+    coreList = [item for item in similarItems if item in coreAsins]
+    print('similar Items',len(similarItems), similarItems)
+    print('core items', len(coreList),coreList)
+    if len(coreList) >= 6:
+        b = Counter(coreList)
+    else:
+        b = Counter(similarItems)
 
-    recommendedItems = []
-    for asin,count in b.most_common(7):
+    recommendedItems = userItems.copy()
+    for asin,count in b.most_common(6):
         recommendedItems.append(asin)
 
     return recommendedItems
@@ -201,7 +213,7 @@ def return_recommendations(featureList,productList):
     recommendedItems = {}
     textProds = findSimilarsText(productAsins)
     MFProds = findSimilarsMF(productAsins)
-    featureProds = findSimilarsTextOnly(featureList)
+    featureProds = findSimilarsTextOnly(featureList, productAsins)
     recommendedItems['textProds'] = textProds
     recommendedItems['MFProds'] = MFProds
     recommendedItems['featureProds'] = featureProds
