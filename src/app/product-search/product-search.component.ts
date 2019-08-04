@@ -31,7 +31,6 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       ngOnInit() {
 
         this.productList.push("You haven't selected any products yet!")
-        this.featureList.push("You haven't selected any features yet!")
 
         this.route.queryParams.subscribe(params => {
             this.keywords = params['keywords'];
@@ -40,6 +39,8 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
             console.log(this.category)
             console.error
                 });
+
+        this.featureList.push(this.keywords.split(' '))
 
         this.recommendationListSubs = this.recommendationApi
           .getRecommendations(this.keywords, this.category)
