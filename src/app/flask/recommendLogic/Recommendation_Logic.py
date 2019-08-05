@@ -195,9 +195,9 @@ def findSimilarsTextOnly(features,userItems):
     else:
         b = Counter(similarItems)
 
-    recommendedItems = userItems.copy()
-    for asin,count in b.most_common(6):
-        recommendedItems.append(asin)
+    recommendedItems = []
+       for item in userItems:
+           recommendedItems.append(item)
 
     return recommendedItems
 
