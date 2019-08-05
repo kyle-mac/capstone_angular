@@ -58,7 +58,6 @@ export class ProductSearchComponent implements OnInit , OnDestroy {
       }
 
       splitText(string) {
-        console.log('Split string is' + string.split(','))
         return string.split(',');
         }
 
